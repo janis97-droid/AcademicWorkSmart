@@ -4,303 +4,278 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AssistAcademic — مساعدك الأكاديمي</title>
-  <meta name="description" content="مساعدة أكاديمية احترافية — أبحاث، مقالات، مشاريع جامعية وكليات." />
+  <meta
+    name="description"
+    content="مساعدة أكاديمية احترافية في مختلف التخصصات الجامعية، مع تقدير أولي لحجم العمل والوقت وتواصل مباشر عبر النموذج أو تيليجرام."
+  />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
 
 <div class="app-shell">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-text">AssistAcademic</div>
-      <div class="logo-sub">مساعدك الأكاديمي<br/>המסייע האקדמי שלך · Your Academic Assistant</div>
+      <div class="logo-sub">مساعدك الأكاديمي<br />המסייע האקדמי שלך · Your Academic Assistant</div>
     </div>
 
     <div class="sidebar-section">
-      <h3>آراء الطلاب</h3>
+      <h3>لماذا نحن؟</h3>
       <div class="review-card">
-        <div class="reviewer">م. ريم — جامعة حيفا</div>
-        <div class="stars">★★★★★</div>
-        <p>بحث ممتاز، سلّم في الوقت المحدد وبجودة عالية.</p>
+        <div class="reviewer">واجهة واضحة</div>
+        <p>موقع بسيط ومرتب يركّز على التخصصات الأكاديمية والتواصل السريع من دون تشتيت.</p>
       </div>
       <div class="review-card">
-        <div class="reviewer">أ. خالد — كلية سخنين</div>
-        <div class="stars">★★★★★</div>
-        <p>ساعدوني في مشروع التخرج، أفضل خدمة جربتها.</p>
+        <div class="reviewer">عرض مهني</div>
+        <p>تصميم حديث بطابع أكاديمي هادئ ومناسب للجامعات والكليات.</p>
       </div>
       <div class="review-card">
-        <div class="reviewer">ن. سمر — Open University</div>
-        <div class="stars">★★★★☆</div>
-        <p>تواصل سريع وعمل منظم. سأتعامل معهم مجددًا.</p>
+        <div class="reviewer">تواصل مباشر</div>
+        <p>يمكنك الانتقال من اختيار التخصص إلى التواصل خلال ثوانٍ عبر النموذج أو تيليجرام.</p>
       </div>
     </div>
 
     <div class="sidebar-section">
-      <h3>تخصصاتنا</h3>
+      <h3>تخصصات شائعة</h3>
       <div>
         <span class="field-pill">علم النفس</span>
-        <span class="field-pill">تربية وتعليم</span>
-        <span class="field-pill">محاسبة</span>
-        <span class="field-pill">إدارة أعمال</span>
-        <span class="field-pill">قانون</span>
+        <span class="field-pill">الهندسة</span>
+        <span class="field-pill">التربية والتعليم</span>
+        <span class="field-pill">إدارة الأعمال</span>
+        <span class="field-pill">القانون</span>
         <span class="field-pill">علوم الحاسوب</span>
+        <span class="field-pill">المحاسبة</span>
+        <span class="field-pill">التمريض</span>
         <span class="field-pill">الصحة العامة</span>
-        <span class="field-pill">اجتماع</span>
-        <span class="field-pill">تغذية وصحة</span>
-        <span class="field-pill">تمريض</span>
-        <span class="field-pill">هندسة</span>
-        <span class="field-pill">اقتصاد</span>
-        <span class="field-pill">تاريخ وجغرافيا</span>
-        <span class="field-pill">أدب ولغات</span>
-        <span class="field-pill">موسيقى وفنون</span>
+        <span class="field-pill">الاقتصاد</span>
+        <span class="field-pill">الاجتماع</span>
+        <span class="field-pill">التغذية</span>
       </div>
     </div>
   </aside>
 
   <div class="main">
-
-    <!-- TOPBAR -->
     <header class="topbar">
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="ar">عربي</button>
-        <button class="lang-btn" data-lang="he">עברית</button>
-        <button class="lang-btn" data-lang="en">English</button>
+      <div class="topbar-left">
+        <nav class="nav-tabs">
+          <a href="#subjects" class="nav-tab active">التخصصات</a>
+          <a href="#estimator" class="nav-tab">التقدير الأولي</a>
+          <a href="#contact" class="nav-tab">التواصل</a>
+        </nav>
       </div>
-      <div class="topbar-actions">
-        <a href="#estimator" class="btn btn-outline">تقدير السعر</a>
-        <a href="#contact" class="btn btn-navy">تواصل معنا</a>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ar">عربي</button>
+          <button class="lang-btn" data-lang="he">עברית</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="#contact" class="btn btn-primary">ابدأ الآن</a>
+        </div>
       </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero-badge">خدمة أكاديمية موثوقة · 100% سرية</div>
-      <h1>مساعدتك الأكاديمية<br /><span>من البحث إلى التسليم</span></h1>
-      <p>نساعد طلاب الجامعات والكليات في إعداد الأبحاث والمقالات والمشاريع بأسلوب أكاديمي محترف، في المواعيد المحددة وبسرية تامة.</p>
+      <div class="hero-badge">واجهة واضحة · تصميم مهني · تواصل سريع</div>
+      <h1>مساعدك الأكاديمي<br /><span>في مختلف التخصصات الجامعية</span></h1>
+      <p>
+        هذا الموقع يركّز على ما تحتاجه فعلاً:
+        التخصصات التي يمكننا المساعدة فيها، تقدير أولي لحجم العمل والوقت، ثم انتقال مباشر إلى نموذج التواصل أو تيليجرام.
+      </p>
+
       <div class="hero-ctas">
-        <a href="#subjects" class="btn btn-primary">استعرض الخدمات</a>
-        <a href="#estimator" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35);color:#fff;">احسب السعر</a>
+        <a href="#subjects" class="btn btn-primary">استعرض التخصصات</a>
+        <a href="#contact" class="btn btn-outline">تواصل معنا</a>
       </div>
     </section>
 
-    <!-- STATS -->
     <div class="stats-row">
-      <div class="stat"><div class="val">+200</div><div class="label">طالب استفاد</div></div>
-      <div class="stat"><div class="val">+15</div><div class="label">تخصص أكاديمي</div></div>
-      <div class="stat"><div class="val">98%</div><div class="label">نسبة الرضا</div></div>
-      <div class="stat"><div class="val">سري</div><div class="label">خصوصيتك محفوظة</div></div>
+      <div class="stat">
+        <div class="val">12+</div>
+        <div class="label">تخصصات رئيسية</div>
+      </div>
+      <div class="stat">
+        <div class="val">واضح</div>
+        <div class="label">تنظيم بسيط وسريع</div>
+      </div>
+      <div class="stat">
+        <div class="val">مهني</div>
+        <div class="label">طابع أكاديمي محترف</div>
+      </div>
+      <div class="stat">
+        <div class="val">مباشر</div>
+        <div class="label">نموذج + تيليجرام</div>
+      </div>
     </div>
 
-    <!-- SUBJECTS -->
     <section class="section" id="subjects">
       <div class="section-header">
-        <h2>الخدمات المتاحة</h2>
-        <p>اضغط على أي بطاقة لتحديدها في آلة تقدير السعر</p>
+        <h2>التخصصات التي نساعد فيها</h2>
+        <p>اضغط على أي بطاقة، وسيتم تعبئة التخصص تلقائيًا في قسم التواصل.</p>
       </div>
+
       <div class="subjects-grid">
-        <div class="subject-card" data-subject="research">
-          <span class="subject-icon">🔬</span>
-          <div class="subject-name">بحث أكاديمي</div>
-          <div class="subject-desc">بحوث موثّقة بمصادر موثوقة، توثيق APA/MLA، مراجعة نهائية.</div>
-          <span class="subject-price">يبدأ من 150 ₪</span>
+        <div class="subject-card" data-subject="علم النفس">
+          <span class="subject-icon">🧠</span>
+          <div class="subject-name">علم النفس</div>
+          <div class="subject-desc">أعمال أكاديمية، تقارير، أبحاث، وتحليل موضوعات مرتبطة بعلم النفس.</div>
         </div>
-        <div class="subject-card" data-subject="essay">
-          <span class="subject-icon">📝</span>
-          <div class="subject-name">مقالة أكاديمية</div>
-          <div class="subject-desc">كتابة احترافية، حجج منطقية، أسلوب أكاديمي سليم.</div>
-          <span class="subject-price">يبدأ من 80 ₪</span>
+
+        <div class="subject-card" data-subject="الهندسة">
+          <span class="subject-icon">🏗️</span>
+          <div class="subject-name">الهندسة</div>
+          <div class="subject-desc">دعم في الأعمال الكتابية والأكاديمية ضمن المجالات الهندسية المختلفة.</div>
         </div>
-        <div class="subject-card" data-subject="project">
+
+        <div class="subject-card" data-subject="التربية والتعليم">
+          <span class="subject-icon">📚</span>
+          <div class="subject-name">التربية والتعليم</div>
+          <div class="subject-desc">أبحاث، مهام، وتحليلات أكاديمية مرتبطة بالتعليم والتربية والتدريس.</div>
+        </div>
+
+        <div class="subject-card" data-subject="إدارة الأعمال">
+          <span class="subject-icon">💼</span>
+          <div class="subject-name">إدارة الأعمال</div>
+          <div class="subject-desc">تقارير وأبحاث وعروض أكاديمية في الإدارة والتنظيم والتخطيط.</div>
+        </div>
+
+        <div class="subject-card" data-subject="القانون">
+          <span class="subject-icon">⚖️</span>
+          <div class="subject-name">القانون</div>
+          <div class="subject-desc">تنظيم موضوعات قانونية أكاديمية بأسلوب مرتب وواضح حسب متطلبات المساق.</div>
+        </div>
+
+        <div class="subject-card" data-subject="علوم الحاسوب">
+          <span class="subject-icon">💻</span>
+          <div class="subject-name">علوم الحاسوب</div>
+          <div class="subject-desc">أعمال أكاديمية نظرية مرتبطة بالحوسبة والأنظمة والمواد التقنية المختلفة.</div>
+        </div>
+
+        <div class="subject-card" data-subject="المحاسبة">
           <span class="subject-icon">📊</span>
-          <div class="subject-name">مشروع تخرج</div>
-          <div class="subject-desc">مشاريع نهائية شاملة: اقتراح، بحث، تحليل، عرض.</div>
-          <span class="subject-price">يبدأ من 350 ₪</span>
+          <div class="subject-name">المحاسبة</div>
+          <div class="subject-desc">واجبات وتقارير أكاديمية في المحاسبة والمفاهيم المالية الأساسية.</div>
         </div>
-        <div class="subject-card" data-subject="summary">
-          <span class="subject-icon">📄</span>
-          <div class="subject-name">ملخص وتلخيص</div>
-          <div class="subject-desc">تلخيص مقالات ومصادر أكاديمية بدقة وإيجاز.</div>
-          <span class="subject-price">يبدأ من 50 ₪</span>
+
+        <div class="subject-card" data-subject="التمريض">
+          <span class="subject-icon">🩺</span>
+          <div class="subject-name">التمريض</div>
+          <div class="subject-desc">دعم أكاديمي في الأعمال النظرية والتقارير المرتبطة بالتمريض.</div>
         </div>
-        <div class="subject-card" data-subject="review">
-          <span class="subject-icon">🔍</span>
-          <div class="subject-name">مراجعة أدبية</div>
-          <div class="subject-desc">Literature Review شاملة مع تحليل ومقارنة المصادر.</div>
-          <span class="subject-price">يبدأ من 100 ₪</span>
+
+        <div class="subject-card" data-subject="الصحة العامة">
+          <span class="subject-icon">🌍</span>
+          <div class="subject-name">الصحة العامة</div>
+          <div class="subject-desc">موضوعات صحية ومجتمعية بصياغة أكاديمية واضحة ومنظمة.</div>
         </div>
-        <div class="subject-card" data-subject="analysis">
+
+        <div class="subject-card" data-subject="الاقتصاد">
           <span class="subject-icon">📈</span>
-          <div class="subject-name">تحليل بيانات</div>
-          <div class="subject-desc">SPSS، Excel، تحليل إحصائي، تفسير النتائج.</div>
-          <span class="subject-price">يبدأ من 120 ₪</span>
+          <div class="subject-name">الاقتصاد</div>
+          <div class="subject-desc">تقارير وتحليلات وأبحاث أكاديمية في الموضوعات الاقتصادية المختلفة.</div>
         </div>
-        <div class="subject-card" data-subject="assignment">
-          <span class="subject-icon">✏️</span>
-          <div class="subject-name">واجب دراسي</div>
-          <div class="subject-desc">حل واجبات فردية وجماعية لمختلف المساقات.</div>
-          <span class="subject-price">يبدأ من 60 ₪</span>
+
+        <div class="subject-card" data-subject="الاجتماع">
+          <span class="subject-icon">👥</span>
+          <div class="subject-name">الاجتماع</div>
+          <div class="subject-desc">أعمال أكاديمية في القضايا الاجتماعية والنظريات والتحليلات المرتبطة بها.</div>
         </div>
-        <div class="subject-card" data-subject="presentation">
-          <span class="subject-icon">🎤</span>
-          <div class="subject-name">عرض تقديمي</div>
-          <div class="subject-desc">PowerPoint / Canva احترافي مع ملاحظات العرض.</div>
-          <span class="subject-price">يبدأ من 90 ₪</span>
+
+        <div class="subject-card" data-subject="التغذية">
+          <span class="subject-icon">🥗</span>
+          <div class="subject-name">التغذية</div>
+          <div class="subject-desc">دعم أكاديمي في موضوعات التغذية والصحة ضمن عرض أكاديمي مهني.</div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="section section-alt">
-      <div class="section-header">
-        <h2>كيف يعمل؟</h2>
-        <p>أربع خطوات بسيطة من الطلب إلى التسليم</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h4>أرسل تفاصيل العمل</h4>
-          <p>نوع العمل، الجامعة، التعليمات، الموعد النهائي.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h4>نراجع ونقدّر السعر</h4>
-          <p>نقرأ التفاصيل ونرسل تقدير سعر حسب الحجم والمستوى.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h4>الدفع والبدء</h4>
-          <p>بعد الاتفاق يبدأ العمل فورًا مع تواصل مستمر.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <h4>الاستلام والمراجعة</h4>
-          <p>تستلم العمل كاملًا مع تعديلات مجانية إذا احتجت.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICE ESTIMATOR -->
     <section class="section" id="estimator">
       <div class="section-header">
-        <h2>تقدير السعر</h2>
-        <p>السعر تقريبي وليس ثابتًا — يعتمد على التعليمات الفعلية والتفاصيل الكاملة</p>
+        <h2>تقدير أولي لحجم العمل والوقت</h2>
+        <p>بدل عرض تكلفة، هذا القسم يعطي تصورًا أوليًا عن حجم العمل المناسب والزمن المتوقع للبدء.</p>
       </div>
-      <div class="estimator">
-        <label for="work-type">نوع العمل</label>
-        <select id="work-type">
-          <option value="essay">مقالة أكاديمية</option>
-          <option value="research" selected>بحث أكاديمي</option>
-          <option value="summary">تلخيص</option>
-          <option value="project">مشروع تخرج</option>
-          <option value="review">مراجعة أدبية</option>
-          <option value="analysis">تحليل بيانات</option>
-          <option value="assignment">واجب دراسي</option>
-          <option value="presentation">عرض تقديمي</option>
-        </select>
-        <label for="level">المستوى الأكاديمي</label>
-        <select id="level">
-          <option value="college">كلية / مهني</option>
-          <option value="university" selected>بكالوريوس</option>
-          <option value="graduate">دراسات عليا (ماجستير / دكتوراه)</option>
-        </select>
-        <label for="pages">عدد الصفحات: <span id="pages-val">5</span></label>
-        <input type="range" id="pages" min="1" max="30" value="5" step="1" />
-        <div class="price-display">
-          <div class="range-label">التقدير المبدئي</div>
-          <div class="price-range" id="price-output">250–450 ₪</div>
-          <div class="price-note">السعر النهائي يُحدَّد بعد مراجعة التعليمات الكاملة<br/>هذا الرقم للاسترشاد فقط</div>
+
+      <div class="contact-grid">
+        <div class="estimator">
+          <label for="pages">عدد الصفحات: <span id="pages-value">5 صفحات</span></label>
+          <input type="range" id="pages" min="1" max="30" value="5" step="1" />
+
+          <label for="deadline">الموعد المطلوب</label>
+          <select id="deadline">
+            <option value="7+">أكثر من أسبوع</option>
+            <option value="3-7">خلال 3–7 أيام</option>
+            <option value="24-72">خلال 24–72 ساعة</option>
+          </select>
+
+          <label for="level">المستوى الأكاديمي</label>
+          <select id="level">
+            <option value="college">كلية / مهني</option>
+            <option value="university" selected>بكالوريوس</option>
+            <option value="graduate">دراسات عليا</option>
+          </select>
+        </div>
+
+        <div class="chat-cta">
+          <div>
+            <h3>النتيجة الأولية</h3>
+            <p><strong>حجم العمل:</strong> <span id="workload-value">نطاق خفيف</span></p>
+            <p><strong>الإطار الزمني:</strong> <span id="timing-value">إطار مريح</span></p>
+            <p><strong>ملاحظة:</strong> <span id="note-value">مناسب للأعمال القصيرة مع تعليمات واضحة.</span></p>
+            <p><strong>الأولوية:</strong> <span id="urgency-value">يمكن التخطيط بهدوء</span></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- INTAKE FORM -->
-    <section class="section section-alt" id="contact">
+    <section class="section" id="contact">
       <div class="section-header">
-        <h2>أرسل طلبك</h2>
-        <p>املأ النموذج وسنتواصل معك خلال ساعات لتأكيد السعر والتفاصيل</p>
+        <h2>التواصل</h2>
+        <p>سيتم هنا وضع نموذج التواصل الخارجي، مع إبقاء تيليجرام واضحًا ومباشرًا بجانبه.</p>
       </div>
-      <div class="estimator">
-        <form id="intake-form">
-          <label for="intake-name">الاسم</label>
-          <select id="intake-name" style="display:none"></select>
-          <input type="text" id="intake-name" placeholder="اسمك" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);" required />
 
-          <label for="intake-contact">معرّف تيليجرام أو بريد إلكتروني</label>
-          <input type="text" id="intake-contact" placeholder="معرّف تيليجرام أو إيميل" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);" required />
+      <div class="contact-grid">
+        <div class="estimator">
+          <label for="contact-subject">التخصص المختار</label>
+          <input type="text" id="contact-subject" placeholder="سيظهر هنا التخصص الذي اخترته" />
 
-          <label for="intake-subject">نوع العمل</label>
-          <select id="intake-subject" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;">
-            <option value="بحث أكاديمي">بحث أكاديمي</option>
-            <option value="مقالة">مقالة أكاديمية</option>
-            <option value="مشروع تخرج">مشروع تخرج</option>
-            <option value="تلخيص">تلخيص</option>
-            <option value="واجب دراسي">واجب دراسي</option>
-            <option value="تحليل بيانات">تحليل بيانات</option>
-            <option value="أخرى">أخرى</option>
-          </select>
+          <div class="file-note">
+            ضع هنا كود نموذج التواصل الخارجي الذي سيتم توليده من الخدمة التي ستستخدمها.
+          </div>
 
-          <label for="intake-level">المستوى الأكاديمي</label>
-          <select id="intake-level" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;">
-            <option value="كلية">كلية / مهني</option>
-            <option value="بكالوريوس" selected>بكالوريوس</option>
-            <option value="دراسات عليا">دراسات عليا</option>
-          </select>
+          <div class="success-msg">
+            هذه قاعدة البناء فقط. في الخطوة التالية نركّب نموذج التواصل الحقيقي داخل هذا القسم.
+          </div>
+        </div>
 
-          <label for="intake-details">تفاصيل إضافية</label>
-          <textarea id="intake-details" rows="4" placeholder="الموعد النهائي، تعليمات خاصة، عدد الصفحات..." style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);resize:vertical;"></textarea>
+        <div class="contact-side">
+          <div class="chat-cta">
+            <div>
+              <h3>تواصل مباشر عبر تيليجرام</h3>
+              <p>للطلبات السريعة أو الأعمال المستعجلة، استخدم تيليجرام مباشرة.</p>
+            </div>
 
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;padding:13px;">إرسال الطلب</button>
-        </form>
-
-        <div class="file-note">
-          لإرسال ملفات (PDF، Word، صور): استخدم تيليجرام عبر <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">@AssistAcademicChat</a> أو أرسل رابط Google Drive في حقل التفاصيل أعلاه. الدعم المباشر للملفات قادم قريبًا.
+            <div class="topbar-actions">
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                تيليجرام
+              </a>
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">
+                @AssistAcademicChat
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- TELEGRAM CTA -->
-    <section class="section">
-      <div class="chat-cta">
-        <div>
-          <h3>تفضل التواصل المباشر؟</h3>
-          <p>راسلنا على تيليجرام مباشرة عبر <strong>@AssistAcademicChat</strong> — نردّ خلال ساعات ونساعدك في تحديد السعر والتفاصيل.</p>
-        </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-          <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true">
-              <path d="M120,0C53.7,0,0,53.7,0,120s53.7,120,120,120s120-53.7,120-120S186.3,0,120,0z M176.6,82.2l-19.7,92.9 c-1.5,6.6-5.4,8.2-10.9,5.1l-30.2-22.3l-14.6,14.1c-1.6,1.6-3,3-6.1,3l2.2-31.3l57-51.5c2.5-2.2-0.5-3.5-3.8-1.3l-70.5,44.4 l-30.4-9.5c-6.6-2.1-6.8-6.6,1.4-9.8l118.8-45.8C172.9,74.7,178.4,77.7,176.6,82.2z"/>
-            </svg>
-            تيليجرام
-          </a>
-          <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:var(--text);text-decoration:none;">@AssistAcademicChat</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer class="footer">
-      <div>AssistAcademic © 2025</div>
-      <div>خصوصيتك أولويتنا · السرية مضمونة</div>
-      <div><a href="../en/index.html">English</a> · <a href="../he/index.html">עברית</a></div>
+      <div>AssistAcademic © 2026</div>
+      <div>واجهة بسيطة · طابع مهني · تواصل واضح</div>
+      <div><a href="../he/index.html">עברית</a> · <a href="../en/index.html">English</a></div>
     </footer>
-
   </div>
 </div>
-
-<!-- TAWK.TO LIVE CHAT — replace with your own snippet from tawk.to dashboard -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/default';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
 
 <script src="../assets/main.js"></script>
 </body>
