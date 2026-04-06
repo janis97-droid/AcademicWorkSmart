@@ -14,11 +14,20 @@ document.querySelectorAll('.lang-btn').forEach((btn) => {
 const pagesInput = document.getElementById('pages');
 const deadlineInput = document.getElementById('deadline');
 const levelInput = document.getElementById('level');
+
 const pagesValue = document.getElementById('pages-value');
 const workloadValue = document.getElementById('workload-value');
 const timingValue = document.getElementById('timing-value');
 const noteValue = document.getElementById('note-value');
 const urgencyValue = document.getElementById('urgency-value');
+
+const formPages = document.getElementById('form-pages');
+const formDeadline = document.getElementById('form-deadline');
+const formLevel = document.getElementById('form-level');
+const formWorkload = document.getElementById('form-workload');
+const formTiming = document.getElementById('form-timing');
+const formNote = document.getElementById('form-note');
+const formUrgency = document.getElementById('form-urgency');
 
 function getCopy(lang) {
   const map = {
@@ -80,7 +89,9 @@ function updateEstimate() {
   const deadline = deadlineInput.value;
   const level = levelInput.value;
 
-  if (pagesValue) pagesValue.textContent = `${pages} ${copy.pagesSuffix}`;
+  if (pagesValue) {
+    pagesValue.textContent = `${pages} ${copy.pagesSuffix}`;
+  }
 
   let workload = copy.low;
   if (pages >= 8 || level === 'graduate') workload = copy.medium;
@@ -102,6 +113,14 @@ function updateEstimate() {
   if (timingValue) timingValue.textContent = timing;
   if (noteValue) noteValue.textContent = note;
   if (urgencyValue) urgencyValue.textContent = urgency;
+
+  if (formPages) formPages.value = String(pages);
+  if (formDeadline) formDeadline.value = deadline;
+  if (formLevel) formLevel.value = level;
+  if (formWorkload) formWorkload.value = workload;
+  if (formTiming) formTiming.value = timing;
+  if (formNote) formNote.value = note;
+  if (formUrgency) formUrgency.value = urgency;
 }
 
 if (pagesInput) pagesInput.addEventListener('input', updateEstimate);
@@ -120,4 +139,3 @@ document.querySelectorAll('[data-subject]').forEach((card) => {
     if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
