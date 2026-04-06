@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AssistAcademic </title>
+  <title>AssistAcademic</title>
   <meta
     name="description"
     content="مساعدة أكاديمية احترافية في مختلف التخصصات الجامعية، مع تقدير أولي لحجم العمل والوقت وتواصل مباشر عبر النموذج أو تيليجرام."
@@ -22,10 +22,11 @@
       <h3>لماذا نحن؟</h3>
       <div class="review-card">
         <div class="reviewer">وجهة واضحة</div>
-        <p>نهتم لأن يكون التواصل مباشر ومتابعة خاصّة لكل طالب حتى نسليم الوظيفة</p>
+        <p>نهتم لأن يكون التواصل مباشر ومتابعة خاصّة لكل طالب حتى تسليم الوظيفة</p>
       </div>
       <div class="review-card">
-        <div class="reviewer">تعامل مهني وتجربة سابقة في جميع المواضيع المذكورة ونتائج مرضية</div>
+        <div class="reviewer">تعامل مهني</div>
+        <p>تجربة سابقة في جميع المواضيع المذكورة ونتائج مرضية.</p>
       </div>
       <div class="review-card">
         <div class="reviewer">تواصل مباشر</div>
@@ -55,6 +56,10 @@
   <div class="main">
     <header class="topbar">
       <div class="topbar-left">
+        <a href="#" class="topbar-brand" aria-label="AssistAcademic">
+          <span class="logo-text">AssistAcademic</span>
+        </a>
+
         <nav class="nav-tabs">
           <a href="#subjects" class="nav-tab active">التخصصات</a>
           <a href="#estimator" class="nav-tab">التقدير الأولي</a>
@@ -132,16 +137,17 @@
             <option value="university" selected>بكالوريوس</option>
             <option value="graduate">دراسات عليا</option>
           </select>
-        </div>
 
-        <div class="chat-cta">
-          <div>
-            <h3>النتيجة الأولية</h3>
-            <p><strong>حجم العمل:</strong> <span id="workload-value">نطاق خفيف</span></p>
-            <p><strong>الإطار الزمني:</strong> <span id="timing-value">إطار مريح</span></p>
-            <p><strong>ملاحظة:</strong> <span id="note-value">مناسب للأعمال القصيرة مع تعليمات واضحة.</span></p>
-            <p><strong>الأولوية:</strong> <span id="urgency-value">يمكن التخطيط بهدوء</span></p>
+          <div class="calc-trigger-row">
+            <button type="button" id="calculate-btn" class="btn btn-primary">إحسب</button>
+            <button type="button" id="show-result-btn" class="calc-box">اعرض النتيجة</button>
           </div>
+
+          <div class="result-hint-box">
+            بعد اختيار عدد الصفحات والموعد والمستوى الأكاديمي، اضغط على "اعرض النتيجة" ليظهر لك التقدير الأولي في صندوق منفصل.
+          </div>
+
+          <div class="success-msg" id="estimator-result" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -156,28 +162,10 @@
         <div class="estimator">
           <div id="contact-form-root"></div>
         </div>
-
-        <div class="contact-side">
-          <div class="chat-cta">
-            <div>
-              <h3>تواصل مباشر عبر تيليجرام</h3>
-              <p>للطلبات السريعة أو الأعمال المستعجلة، استخدم تيليجرام مباشرة.</p>
-            </div>
-
-            <div class="topbar-actions">
-              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                تيليجرام
-              </a>
-              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">
-                @AssistAcademicChat
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-     <section class="section" id="subjects">
+    <section class="section" id="subjects">
       <div class="section-header">
         <h2>التخصصات التي نساعد فيها</h2>
         <p>اضغط على أي بطاقة، وسيتم تعبئة التخصص تلقائيًا في قسم التواصل.</p>
@@ -269,5 +257,86 @@
 <script src="../assets/form-embed.js"></script>
 <script src="../assets/main.js"></script>
 <script src="../assets/form-submit.js"></script>
+
+<script>
+  (function () {
+    const pagesInput = document.getElementById('pages');
+    const pagesValue = document.getElementById('pages-value');
+    const deadlineInput = document.getElementById('deadline');
+    const levelInput = document.getElementById('level');
+    const calculateBtn = document.getElementById('calculate-btn');
+    const showResultBtn = document.getElementById('show-result-btn');
+    const resultBox = document.getElementById('estimator-result');
+
+    function updatePagesLabel() {
+      const value = Number(pagesInput.value);
+      pagesValue.textContent = value === 1 ? 'صفحة واحدة' : value + ' صفحات';
+    }
+
+    function getWorkload(pages, level) {
+      if (pages <= 5) {
+        return level === 'graduate' ? 'نطاق خفيف إلى متوسط' : 'نطاق خفيف';
+      }
+      if (pages <= 12) {
+        return level === 'graduate' ? 'نطاق متوسط مرتفع' : 'نطاق متوسط';
+      }
+      return level === 'graduate' ? 'نطاق ثقيل جدًا' : 'نطاق ثقيل';
+    }
+
+    function getTiming(deadline) {
+      if (deadline === '24-72') return 'إطار مستعجل';
+      if (deadline === '3-7') return 'إطار متوسط';
+      return 'إطار مريح';
+    }
+
+    function getUrgency(deadline, pages) {
+      if (deadline === '24-72' && pages >= 10) return 'أولوية عالية جدًا';
+      if (deadline === '24-72') return 'أولوية عالية';
+      if (deadline === '3-7') return 'أولوية متوسطة';
+      return 'يمكن التخطيط بهدوء';
+    }
+
+    function getNote(pages, deadline, level) {
+      if (deadline === '24-72' && level === 'graduate') {
+        return 'المطلوب يحتاج مراجعة سريعة ودقة عالية بسبب ضيق الوقت والمستوى الأكاديمي.';
+      }
+      if (pages >= 15) {
+        return 'العمل كبير نسبيًا ويُفضّل إرساله مبكرًا مع التعليمات كاملة.';
+      }
+      if (pages <= 5 && deadline === '7+') {
+        return 'مناسب للأعمال القصيرة مع تعليمات واضحة ووقت مريح للتنفيذ.';
+      }
+      return 'يفضل إرسال التعليمات والمراجع المطلوبة مبكرًا للحصول على تنظيم أفضل.';
+    }
+
+    function buildResult() {
+      const pages = Number(pagesInput.value);
+      const deadline = deadlineInput.value;
+      const level = levelInput.value;
+
+      const workload = getWorkload(pages, level);
+      const timing = getTiming(deadline);
+      const urgency = getUrgency(deadline, pages);
+      const note = getNote(pages, deadline, level);
+
+      resultBox.innerHTML = `
+        <div>
+          <h3>النتيجة الأولية</h3>
+          <p><strong>حجم العمل:</strong> ${workload}</p>
+          <p><strong>الإطار الزمني:</strong> ${timing}</p>
+          <p><strong>ملاحظة:</strong> ${note}</p>
+          <p><strong>الأولوية:</strong> ${urgency}</p>
+        </div>
+      `;
+    }
+
+    updatePagesLabel();
+
+    pagesInput.addEventListener('input', updatePagesLabel);
+    calculateBtn.addEventListener('click', buildResult);
+    showResultBtn.addEventListener('click', buildResult);
+  })();
+</script>
+
 </body>
 </html>
