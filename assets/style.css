@@ -1,3 +1,1513 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --bg:#f5f7fb;
+  --bg-2:#eef3fb;
+  --panel:#ffffff;
+  --border:#d7e1ef;
+  --navy:#132741;
+  --navy-2:#1f3c62;
+  --text:#1d3554;
+  --muted:#6b7b95;
+  --blue:#2563eb;
+  --blue-2:#1d4ed8;
+  --blue-soft:#eff4ff;
+  --accent:#d7b660;
+  --shadow-sm:0 8px 24px rgba(15,23,42,.06);
+  --shadow-md:0 18px 50px rgba(15,23,42,.10);
+  --radius:18px;
+  --sidebar-w:310px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Tajawal',sans-serif;
+  background:linear-gradient(180deg,#f9fbff 0%,var(--bg) 100%);
+  color:var(--text);
+  direction:rtl;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body.ltr{direction:ltr}
+
+a{text-decoration:none;color:inherit}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-thumb{background:#c8d4e7;border-radius:10px}
+
+/* Sidebar removed */
+.app-shell{
+  display:block;
+  min-height:100vh;
+}
+
+.sidebar{
+  display:none !important;
+  width:0;
+  flex-shrink:0;
+  padding:0;
+  height:0;
+  overflow:hidden;
+  border:none;
+}
+
+.sidebar-logo{
+  padding:0 24px 24px;
+  margin-bottom:24px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+.logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;
+  line-height:1;
+  color:#fff;
+}
+
+.logo-sub{
+  margin-top:10px;
+  font-size:.78rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.72);
+}
+
+.sidebar-section{padding:0 20px 24px}
+
+.sidebar-section h3{
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.46);
+  margin-bottom:14px;
+  padding-inline:4px;
+}
+
+.review-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:10px;
+}
+
+.review-card .reviewer{
+  font-weight:700;
+  color:#f3d996;
+  font-size:.82rem;
+  margin-bottom:4px;
+}
+
+.review-card p{
+  font-size:.82rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.74);
+}
+
+.field-pill{
+  display:inline-flex;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  padding:6px 11px;
+  font-size:.76rem;
+  color:rgba(255,255,255,.84);
+  margin:4px;
+}
+
+.main{
+  flex:1;
+  min-width:0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Reorder sections so the estimator/form section comes before subjects,
+   and subjects render last after the form section */
+.main > *{order:0}
+.main > .topbar{order:0}
+.main > .hero{order:1}
+.main > .stats-row{order:2}
+.main > .section:has(.contact-grid){order:3}
+.main > .section:has(.subjects-grid){order:4}
+.main > .footer{order:5}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:14px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.topbar-left,.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.topbar-left{
+  gap:18px;
+}
+
+.topbar-brand,
+.topbar .sidebar-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0;
+  margin:0;
+  border:none;
+  flex-shrink:0;
+  background:transparent;
+}
+
+.topbar-brand .logo-mark,
+.topbar .sidebar-logo .logo-mark{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  font-weight:800;
+  box-shadow:var(--shadow-sm);
+}
+
+.topbar-brand .logo-stack,
+.topbar .sidebar-logo .logo-stack{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  line-height:1;
+}
+
+.topbar-brand .logo-text,
+.topbar .sidebar-logo .logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  color:var(--navy);
+}
+
+.topbar-brand .logo-sub,
+.topbar .sidebar-logo .logo-sub{
+  margin-top:0;
+  font-size:.7rem;
+  line-height:1.4;
+  color:var(--muted);
+}
+
+/* Fallback text brand if no logo node exists in the topbar */
+.topbar-left:not(:has(.topbar-brand,.sidebar-logo))::before{
+  content:"AcademicWorkSmart";
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1;
+  white-space:nowrap;
+}
+
+.topbar-left .nav-tabs{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.nav-tabs{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.nav-tab{
+  padding:10px 15px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-size:.88rem;
+  font-weight:700;
+  color:var(--muted);
+  transition:.2s ease;
+}
+
+.nav-tab:hover{
+  background:#fff;
+  border-color:var(--border);
+  color:var(--navy);
+}
+
+.nav-tab.active{
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+
+.lang-switcher{
+  display:flex;
+  gap:6px;
+}
+
+.lang-btn{
+  background:#fff;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:10px;
+  padding:8px 12px;
+  font-size:.8rem;
+  font-weight:700;
+  font-family:'Tajawal',sans-serif;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.lang-btn:hover,.lang-btn.active{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
+
+.topbar-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:none;
+  border-radius:14px;
+  padding:11px 18px;
+  font-family:'Tajawal',sans-serif;
+  font-size:.9rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.btn:hover{transform:translateY(-1px)}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-2));
+  color:#fff;
+  box-shadow:0 12px 24px rgba(37,99,235,.18);
+}
+
+.btn-primary:hover{
+  box-shadow:0 18px 32px rgba(37,99,235,.22);
+}
+
+.btn-navy{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn-outline{
+  background:#fff;
+  border:1.5px solid var(--border);
+  color:var(--navy);
+}
+
+.btn-outline:hover{
+  border-color:var(--blue);
+  color:var(--blue);
+  background:var(--blue-soft);
+}
+
+.hero{
+  margin:32px 34px 18px;
+  border-radius:28px;
+  padding:58px 52px;
+  background:linear-gradient(135deg,#10253f 0%,#18355a 56%,#2a5d98 100%);
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.hero::before{
+  width:340px;
+  height:340px;
+  top:-120px;
+  inset-inline-start:-80px;
+  background:radial-gradient(circle,rgba(215,182,96,.18),transparent 70%);
+}
+
+.hero::after{
+  width:300px;
+  height:300px;
+  bottom:-130px;
+  inset-inline-end:-60px;
+  background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);
+}
+
+.hero-badge{
+  display:inline-block;
+  background:rgba(215,182,96,.16);
+  border:1px solid rgba(215,182,96,.34);
+  color:#f4db99;
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:.78rem;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.1rem,4vw,3.3rem);
+  line-height:1.15;
+  color:#fff;
+  margin-bottom:16px;
+  max-width:740px;
+}
+
+.hero h1 span{color:#f4db99}
+
+.hero p{
+  max-width:650px;
+  font-size:1rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.78);
+  margin-bottom:28px;
+}
+
+.hero-ctas{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:0 34px 24px;
+}
+
+.stat{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px 20px;
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+}
+
+.stat .val{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  color:var(--navy);
+}
+
+.stat .label{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.section{
+  padding:0 34px 24px;
+}
+
+.section-header{
+  margin-bottom:22px;
+}
+
+.section-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.section-header p{
+  font-size:.92rem;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.subjects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+.subject-card,
+.estimator{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow-sm);
+}
+
+.subject-card{
+  padding:24px 22px;
+  cursor:pointer;
+  transition:.22s ease;
+}
+
+.subject-card:hover{
+  transform:translateY(-4px);
+  border-color:#bfd1f4;
+  box-shadow:var(--shadow-md);
+}
+
+.subject-icon{
+  font-size:2rem;
+  display:block;
+  margin-bottom:14px;
+}
+
+.subject-name{
+  font-size:1rem;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.subject-desc{
+  font-size:.84rem;
+  line-height:1.75;
+  color:var(--muted);
+}
+
+.estimator{
+  padding:30px;
+}
+
+.estimator label{
+  display:block;
+  font-size:.84rem;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.estimator select,
+.estimator input[type="text"],
+.estimator textarea{
+  width:100%;
+  background:#fbfdff;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:12px 14px;
+  font-family:'Tajawal',sans-serif;
+  font-size:.92rem;
+  color:var(--text);
+  margin-bottom:18px;
+}
+
+.estimator select:focus,
+.estimator input[type="text"]:focus,
+.estimator textarea:focus{
+  outline:none;
+  border-color:#b3c7ef;
+  box-shadow:0 0 0 4px rgba(37,99,235,.08);
+}
+
+input[type="range"]{
+  width:100%;
+  accent-color:var(--blue);
+  margin-bottom:18px;
+}
+
+.file-note{
+  margin-top:14px;
+  background:#fffbeb;
+  border:1.5px solid #fde68a;
+  color:#92400e;
+  border-radius:16px;
+  padding:14px 16px;
+  font-size:.82rem;
+  line-height:1.7;
+}
+
+.file-note a{
+  color:#b45309;
+  font-weight:700;
+}
+
+.success-msg{
+  display:block;
+  margin-top:18px;
+  background:linear-gradient(135deg,#10253f 0%,#18355a 100%);
+  border:1px solid rgba(255,255,255,.08);
+  color:#fff;
+  border-radius:22px;
+  padding:28px;
+  font-weight:700;
+  line-height:1.8;
+  box-shadow:var(--shadow-sm);
+}
+
+.success-msg h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.success-msg p,
+.success-msg small,
+.success-msg span,
+.success-msg div{
+  color:rgba(255,255,255,.84);
+}
+
+.success-msg a{
+  color:#fff;
+  font-weight:700;
+  text-decoration:underline;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  align-items:start;
+}
+
+/* Keep the estimator/form first and full width */
+.contact-grid > .estimator{
+  order:1;
+  width:100%;
+}
+
+.contact-grid > .contact-side{
+  order:2;
+  display:none !important;
+}
+
+.contact-side{
+  display:none !important;
+  gap:18px;
+}
+
+.chat-cta{
+  display:none !important;
+}
+
+.footer{
+  margin:0 34px 34px;
+  background:linear-gradient(135deg,#10253f,#183152);
+  color:rgba(255,255,255,.76);
+  border-radius:24px;
+  padding:22px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.footer a{color:#fff}
+.footer a:hover{color:#f4db99}
+
+@media (max-width:1100px){
+  .contact-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:900px){
+  .app-shell{display:block}
+
+  .sidebar{
+    display:none !important;
+    width:0;
+    height:0;
+    padding:0;
+    border:none;
+  }
+
+  .topbar,.hero,.stats-row,.section,.footer{
+    margin-inline:20px;
+    padding-inline:20px;
+  }
+
+  .topbar{padding-block:12px}
+  .hero{padding-block:38px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:640px){
+  .topbar,.hero,.stats-row,.section,.footer{
+    margin-inline:16px;
+    padding-inline:16px;
+  }
+
+  .topbar-left{
+    gap:12px;
+  }
+
+  .topbar-left:not(:has(.topbar-brand,.sidebar-logo))::before{
+    font-size:1.1rem;
+  }
+
+  .topbar-brand .logo-text,
+  .topbar .sidebar-logo .logo-text,
+  .logo-text{
+    font-size:1.1rem;
+  }
+
+  .hero{padding:32px 22px}
+  .stats-row{grid-template-columns:1fr}
+}
+
+/* Result block shown after user calculates */
+.estimator .success-msg{
+  animation:fadeSlideIn .28s ease;
+}
+
+@keyframes fadeSlideIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+
+/* ===== v4: blue estimator panel + result box on the left after calculate ===== */
+
+/* Main estimator panel */
+.contact-grid > .estimator,
+.estimator{
+  background:linear-gradient(135deg,#102b4d 0%, #1a4f91 100%);
+  border:1px solid rgba(37,99,235,.18);
+  box-shadow:0 26px 56px rgba(16,43,77,.20);
+  color:#fff;
+}
+
+/* Form content inside blue box */
+.estimator label{
+  color:#fff;
+}
+
+.estimator .section-header h2,
+.estimator .section-header p,
+.estimator .section-header small,
+.estimator .section-header span,
+.estimator .range-label,
+.estimator .range-value,
+.estimator .muted,
+.estimator small{
+  color:rgba(255,255,255,.84);
+}
+
+.estimator select,
+.estimator input[type="text"],
+.estimator input[type="email"],
+.estimator input[type="tel"],
+.estimator input[type="number"],
+.estimator textarea{
+  background:rgba(255,255,255,.96);
+  border:1.5px solid rgba(255,255,255,.28);
+  color:var(--text);
+  box-shadow:none;
+}
+
+.estimator select:focus,
+.estimator input[type="text"]:focus,
+.estimator input[type="email"]:focus,
+.estimator input[type="tel"]:focus,
+.estimator input[type="number"]:focus,
+.estimator textarea:focus{
+  border-color:rgba(255,255,255,.5);
+  box-shadow:0 0 0 4px rgba(255,255,255,.14);
+}
+
+.estimator input::placeholder,
+.estimator textarea::placeholder{
+  color:#7d8ea8;
+}
+
+.estimator input[type="range"]{
+  accent-color:#ffffff;
+}
+
+.estimator .btn,
+.estimator button{
+  box-shadow:none;
+}
+
+.estimator .btn-primary,
+.estimator .btn-navy,
+.estimator button.btn-primary,
+.estimator button.btn-navy{
+  background:#fff;
+  color:#12335b;
+  border:1px solid rgba(255,255,255,.28);
+}
+
+.estimator .btn-primary:hover,
+.estimator .btn-navy:hover,
+.estimator button.btn-primary:hover,
+.estimator button.btn-navy:hover{
+  background:#f8fbff;
+  color:#102b4d;
+}
+
+.estimator .btn-outline,
+.estimator button.btn-outline{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+}
+
+.estimator .btn-outline:hover,
+.estimator button.btn-outline:hover{
+  background:rgba(255,255,255,.16);
+  color:#fff;
+}
+
+.estimator .file-note{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+}
+
+.estimator .file-note a{
+  color:#fff;
+}
+
+/* Result box: hidden until the app writes content into it */
+.success-msg{
+  display:none;
+  margin-top:18px;
+  background:linear-gradient(180deg,#f8fbff 0%, #eef4ff 100%);
+  border:1px solid #cfe0ff;
+  color:#173b66;
+  border-radius:22px;
+  padding:24px;
+  font-weight:700;
+  line-height:1.85;
+  box-shadow:0 18px 40px rgba(10,37,64,.12);
+}
+
+.success-msg:not(:empty){
+  display:block;
+}
+
+.success-msg h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  margin-bottom:10px;
+  color:#102b4d;
+}
+
+.success-msg p,
+.success-msg small,
+.success-msg span,
+.success-msg div,
+.success-msg li{
+  color:#34557d;
+}
+
+.success-msg a{
+  color:var(--blue);
+  font-weight:700;
+  text-decoration:underline;
+}
+
+/* When the result exists, split estimator into two boxes:
+   result on the LEFT, form on the RIGHT */
+.estimator:has(.success-msg:not(:empty)){
+  display:grid;
+  direction:ltr;
+  grid-template-columns:minmax(320px,.86fr) minmax(0,1.14fr);
+  gap:26px 30px;
+  align-items:start;
+}
+
+.estimator:has(.success-msg:not(:empty)) > *{
+  direction:rtl;
+}
+
+.estimator:has(.success-msg:not(:empty)) > .success-msg{
+  grid-column:1;
+  grid-row:1 / span 999;
+  margin-top:0;
+  align-self:start;
+  position:sticky;
+  top:96px;
+}
+
+.estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+  grid-column:2;
+}
+
+/* Keep the calculate button visually attached to the form column */
+.estimator .btn-primary:last-child,
+.estimator .btn-navy:last-child,
+.estimator button.btn-primary:last-child,
+.estimator button.btn-navy:last-child{
+  margin-top:2px;
+}
+
+/* Tablet/mobile: stack back to one column */
+@media (max-width:980px){
+  .estimator:has(.success-msg:not(:empty)){
+    grid-template-columns:1fr;
+    direction:rtl;
+  }
+
+  .estimator:has(.success-msg:not(:empty)) > .success-msg,
+  .estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+    grid-column:1;
+    position:static;
+  }
+}
+
+
+
+/* ===== v5: smaller centered blue boxes, narrower layout, cleaner result panel ===== */
+
+/* Keep main sections from stretching full-screen */
+.section,
+.hero,
+.stats-row,
+.footer{
+  max-width:1280px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  width:calc(100% - 40px);
+}
+
+/* Contact / estimator area should not span the whole viewport */
+.contact-grid{
+  max-width:1180px;
+  margin-inline:auto;
+  grid-template-columns:1fr;
+}
+
+/* Blue estimator box smaller and centered */
+.contact-grid > .estimator,
+.estimator{
+  max-width:1080px;
+  margin-inline:auto;
+  width:100%;
+  padding:26px 28px;
+  border-radius:24px;
+}
+
+/* Slightly tighter fields so the box feels smaller */
+.estimator select,
+.estimator input[type="text"],
+.estimator input[type="email"],
+.estimator input[type="tel"],
+.estimator input[type="number"],
+.estimator textarea{
+  max-width:100%;
+  padding:11px 13px;
+  border-radius:13px;
+}
+
+.estimator label{
+  margin-bottom:7px;
+}
+
+/* Button row / click box area */
+.estimator .calc-trigger-row{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+/* If you add a dedicated clickable box/button, this styles it */
+.calc-box,
+.estimator .calc-box,
+.result-trigger,
+.estimator .result-trigger{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  min-height:54px;
+  padding:12px 18px;
+  border-radius:16px;
+  background:#ffffff;
+  color:#12335b;
+  border:1px solid rgba(255,255,255,.22);
+  font-weight:800;
+  font-size:.96rem;
+  cursor:pointer;
+  transition:.2s ease;
+  box-shadow:0 10px 24px rgba(12,34,58,.12);
+  user-select:none;
+}
+
+.calc-box:hover,
+.estimator .calc-box:hover,
+.result-trigger:hover,
+.estimator .result-trigger:hover{
+  transform:translateY(-1px);
+  background:#f8fbff;
+}
+
+/* Existing calculate button stays compact */
+.estimator .btn-primary,
+.estimator .btn-navy,
+.estimator button.btn-primary,
+.estimator button.btn-navy{
+  min-width:150px;
+}
+
+/* Result box itself: narrower, cleaner, not too large */
+.success-msg{
+  max-width:380px;
+  width:100%;
+  padding:22px 22px;
+  border-radius:20px;
+}
+
+/* When a result exists, show a more balanced two-box layout */
+.estimator:has(.success-msg:not(:empty)){
+  display:grid;
+  direction:ltr;
+  grid-template-columns:minmax(280px,380px) minmax(0,640px);
+  justify-content:center;
+  gap:22px 26px;
+  align-items:start;
+  max-width:1080px;
+  margin-inline:auto;
+}
+
+.estimator:has(.success-msg:not(:empty)) > *{
+  direction:rtl;
+}
+
+.estimator:has(.success-msg:not(:empty)) > .success-msg{
+  grid-column:1;
+  grid-row:1 / span 999;
+  margin-top:0;
+  align-self:start;
+  position:sticky;
+  top:96px;
+}
+
+.estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+  grid-column:2;
+}
+
+/* Make the content inside result box look like the old removed panel */
+.success-msg h3{
+  font-size:1.3rem;
+  margin-bottom:8px;
+}
+
+.success-msg p{
+  font-size:.92rem;
+  line-height:1.8;
+}
+
+/* Optional helper box under the calculate controls */
+.result-hint-box{
+  display:block;
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.86);
+  font-size:.85rem;
+  line-height:1.7;
+}
+
+/* Large screens should feel contained */
+@media (min-width:1500px){
+  .contact-grid{
+    max-width:1120px;
+  }
+
+  .contact-grid > .estimator,
+  .estimator{
+    max-width:1020px;
+  }
+
+  .estimator:has(.success-msg:not(:empty)){
+    grid-template-columns:minmax(280px,360px) minmax(0,610px);
+  }
+}
+
+/* Tablet/mobile stack */
+@media (max-width:980px){
+  .section,
+  .hero,
+  .stats-row,
+  .footer{
+    width:calc(100% - 32px);
+  }
+
+  .contact-grid{
+    max-width:none;
+  }
+
+  .contact-grid > .estimator,
+  .estimator{
+    max-width:none;
+    padding:22px 18px;
+  }
+
+  .estimator:has(.success-msg:not(:empty)){
+    grid-template-columns:1fr;
+    direction:rtl;
+    max-width:none;
+  }
+
+  .estimator:has(.success-msg:not(:empty)) > .success-msg,
+  .estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+    grid-column:1;
+    position:static;
+    max-width:none;
+  }
+
+  .success-msg{
+    max-width:none;
+  }
+}
+
+/* ===== IMPORTANT IMPLEMENTATION NOTE =====
+To get the clickable box behavior you asked for, your HTML should contain a trigger element like:
+<div class="calc-trigger-row">
+  <button class="btn btn-primary">إحسب</button>
+  <button type="button" class="calc-box">عرض النتيجة</button>
+</div>
+
+And your JS should copy/show the old removed panel content inside .success-msg after calculation.
+This stylesheet is fully ready for that structure.
+===== */
+
+
+/* ===== Premium modern academic theme refresh: visual only, no layout changes ===== */
+
+:root{
+  --bg:#0b1020;
+  --bg-2:#121a30;
+  --panel:#ffffff;
+  --panel-soft:#f7faff;
+  --border:#d8e2f2;
+  --border-strong:#bdd0ea;
+  --navy:#0f1f3d;
+  --navy-2:#1a315d;
+  --text:#15314f;
+  --muted:#64748b;
+  --blue:#2563eb;
+  --blue-2:#4f46e5;
+  --blue-soft:#eef4ff;
+  --accent:#caa85e;
+  --accent-2:#f3d28a;
+  --success:#0f766e;
+  --shadow-sm:0 14px 30px rgba(2,6,23,.08);
+  --shadow-md:0 24px 60px rgba(2,6,23,.14);
+  --shadow-lg:0 32px 80px rgba(2,6,23,.20);
+}
+
+body{
+  background:
+    radial-gradient(circle at top right, rgba(79,70,229,.10), transparent 28%),
+    radial-gradient(circle at top left, rgba(37,99,235,.08), transparent 24%),
+    linear-gradient(180deg,#f6f9ff 0%, #eef4ff 52%, #f7faff 100%);
+  color:var(--text);
+}
+
+.topbar{
+  background:rgba(255,255,255,.72);
+  border-bottom:1px solid rgba(189,208,234,.72);
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  backdrop-filter:blur(18px);
+}
+
+.topbar-brand .logo-mark,
+.topbar .sidebar-logo .logo-mark{
+  background:linear-gradient(135deg,#0f1f3d 0%, #2563eb 55%, #4f46e5 100%);
+  box-shadow:0 18px 38px rgba(37,99,235,.22);
+}
+
+.topbar-brand .logo-text,
+.topbar .sidebar-logo .logo-text{
+  color:#0f1f3d;
+  letter-spacing:.01em;
+}
+
+.topbar-brand .logo-sub,
+.topbar .sidebar-logo .logo-sub{
+  color:#64748b;
+}
+
+.topbar-left:not(:has(.topbar-brand,.sidebar-logo))::before{
+  color:#0f1f3d;
+}
+
+.nav-tab{
+  color:#5b6b84;
+  border-color:transparent;
+  background:transparent;
+}
+
+.nav-tab:hover{
+  background:rgba(255,255,255,.92);
+  border-color:rgba(189,208,234,.8);
+  color:#102b4d;
+  box-shadow:0 8px 20px rgba(15,23,42,.05);
+}
+
+.nav-tab.active{
+  background:linear-gradient(135deg,#0f1f3d 0%, #1d4ed8 100%);
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 14px 30px rgba(29,78,216,.24);
+}
+
+.lang-btn{
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(189,208,234,.75);
+  color:#5b6b84;
+}
+
+.lang-btn:hover,
+.lang-btn.active{
+  background:linear-gradient(135deg,#2563eb 0%, #4f46e5 100%);
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(79,70,229,.18);
+}
+
+.btn{
+  border-radius:16px;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#2563eb 0%, #4f46e5 100%);
+  box-shadow:0 16px 34px rgba(79,70,229,.22);
+}
+
+.btn-primary:hover{
+  box-shadow:0 20px 38px rgba(79,70,229,.28);
+}
+
+.btn-navy{
+  background:linear-gradient(135deg,#0f1f3d 0%, #1a315d 100%);
+  color:#fff;
+}
+
+.btn-outline{
+  background:rgba(255,255,255,.90);
+  border:1.5px solid rgba(189,208,234,.9);
+  color:#12335b;
+}
+
+.btn-outline:hover{
+  background:#fff;
+  border-color:#caa85e;
+  color:#0f1f3d;
+  box-shadow:0 10px 24px rgba(202,168,94,.10);
+}
+
+.hero{
+  background:
+    radial-gradient(circle at 18% 18%, rgba(243,210,138,.20), transparent 26%),
+    radial-gradient(circle at 88% 82%, rgba(96,165,250,.16), transparent 24%),
+    linear-gradient(135deg,#081426 0%, #102b4d 42%, #1d4ed8 100%);
+  box-shadow:var(--shadow-lg);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.hero::before{
+  background:radial-gradient(circle,rgba(243,210,138,.24),transparent 70%);
+}
+
+.hero::after{
+  background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);
+}
+
+.hero-badge{
+  background:rgba(243,210,138,.14);
+  border:1px solid rgba(243,210,138,.36);
+  color:#f8dfaa;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.hero h1{
+  color:#ffffff;
+  text-shadow:0 6px 26px rgba(0,0,0,.18);
+}
+
+.hero h1 span{
+  color:#f3d28a;
+}
+
+.hero p{
+  color:rgba(255,255,255,.82);
+}
+
+.stats-row{
+  gap:18px;
+}
+
+.stat{
+  background:linear-gradient(180deg,rgba(255,255,255,.94) 0%, rgba(247,250,255,.98) 100%);
+  border:1px solid rgba(189,208,234,.85);
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+}
+
+.stat::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:4px;
+  background:linear-gradient(180deg,#2563eb 0%, #4f46e5 60%, #caa85e 100%);
+  opacity:.9;
+}
+
+.stat .val{
+  color:#102b4d;
+}
+
+.stat .label{
+  color:#64748b;
+}
+
+.section-header h2{
+  color:#0f1f3d;
+  letter-spacing:.01em;
+}
+
+.section-header p{
+  color:#61738e;
+}
+
+.subject-card{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
+  border:1px solid rgba(189,208,234,.78);
+  box-shadow:0 16px 34px rgba(15,23,42,.06);
+}
+
+.subject-card:hover{
+  border-color:rgba(79,70,229,.28);
+  box-shadow:0 24px 50px rgba(37,99,235,.12);
+}
+
+.subject-icon{
+  filter:saturate(1.15);
+}
+
+.subject-name{
+  color:#102b4d;
+}
+
+.subject-desc{
+  color:#64748b;
+}
+
+.contact-grid > .estimator,
+.estimator{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06)),
+    linear-gradient(135deg,#0d2242 0%, #14376a 46%, #254edb 100%);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 70px rgba(15,32,66,.20);
+  position:relative;
+  overflow:hidden;
+}
+
+.contact-grid > .estimator::before,
+.estimator::before{
+  content:"";
+  position:absolute;
+  inset:auto -90px -90px auto;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(243,210,138,.16), transparent 72%);
+  pointer-events:none;
+}
+
+.estimator label{
+  color:#ffffff;
+}
+
+.estimator select,
+.estimator input[type="text"],
+.estimator input[type="email"],
+.estimator input[type="tel"],
+.estimator input[type="number"],
+.estimator textarea{
+  background:rgba(255,255,255,.98);
+  border:1.5px solid rgba(255,255,255,.24);
+  color:#17314f;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+.estimator select:focus,
+.estimator input[type="text"]:focus,
+.estimator input[type="email"]:focus,
+.estimator input[type="tel"]:focus,
+.estimator input[type="number"]:focus,
+.estimator textarea:focus{
+  border-color:rgba(243,210,138,.48);
+  box-shadow:0 0 0 4px rgba(243,210,138,.14);
+}
+
+.estimator input::placeholder,
+.estimator textarea::placeholder{
+  color:#7b8da7;
+}
+
+.estimator input[type="range"]{
+  accent-color:#f3d28a;
+}
+
+.estimator .btn-primary,
+.estimator .btn-navy,
+.estimator button.btn-primary,
+.estimator button.btn-navy{
+  background:linear-gradient(135deg,#ffffff 0%, #eef4ff 100%);
+  color:#0f2d52;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 14px 30px rgba(3,11,24,.12);
+}
+
+.estimator .btn-primary:hover,
+.estimator .btn-navy:hover,
+.estimator button.btn-primary:hover,
+.estimator button.btn-navy:hover{
+  background:linear-gradient(135deg,#ffffff 0%, #f8fbff 100%);
+  color:#0f1f3d;
+}
+
+.calc-box,
+.estimator .calc-box,
+.result-trigger,
+.estimator .result-trigger{
+  background:linear-gradient(135deg,#f3d28a 0%, #caa85e 100%);
+  color:#10253f;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 16px 32px rgba(202,168,94,.26);
+}
+
+.calc-box:hover,
+.estimator .calc-box:hover,
+.result-trigger:hover,
+.estimator .result-trigger:hover{
+  background:linear-gradient(135deg,#f7dc9c 0%, #d1b06d 100%);
+  color:#10253f;
+}
+
+.result-hint-box,
+.file-note{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.88);
+  backdrop-filter:blur(8px);
+}
+
+.result-hint-box a,
+.file-note a{
+  color:#f7dc9c;
+}
+
+.success-msg,
+.estimate-result-card{
+  background:
+    radial-gradient(circle at top left, rgba(243,210,138,.14), transparent 32%),
+    linear-gradient(180deg,#ffffff 0%, #f5f9ff 100%);
+  border:1px solid rgba(189,208,234,.95);
+  color:#17314f;
+  box-shadow:0 24px 54px rgba(15,23,42,.10);
+}
+
+.success-msg h3,
+.estimate-result-card h3{
+  color:#10253f;
+}
+
+.success-msg p,
+.success-msg small,
+.success-msg span,
+.success-msg div,
+.success-msg li,
+.estimate-result-card p,
+.estimate-result-card span{
+  color:#4d6382;
+}
+
+.success-msg strong,
+.estimate-result-card strong{
+  color:#10253f;
+}
+
+.footer{
+  background:
+    linear-gradient(135deg,#081426 0%, #11274a 52%, #1a315d 100%);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:var(--shadow-md);
+}
+
+.footer a{
+  color:#f5d898;
+}
+
+.footer a:hover{
+  color:#ffffff;
+}
+
+/* Polish small elements */
+.review-card,
+.field-pill{
+  backdrop-filter:blur(8px);
+}
+
+.field-pill{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.14);
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#a8b8d4 0%, #8fa6ca 100%);
+}
+
+/* Premium micro-interactions */
+.subject-card,
+.stat,
+.btn,
+.nav-tab,
+.lang-btn,
+.calc-box{
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease, color .22s ease;
+}
+
+/* ===== Arabic index page rules merged in ===== */
 /* Main header + stats in one box before estimator */
     .header-main-box-section{
       padding-top: 28px;
