@@ -8,6 +8,149 @@
     name="description"
     content="مساعدة أكاديمية احترافية في مختلف التخصصات الجامعية، مع تقدير أولي لحجم العمل والوقت وتواصل مباشر عبر النموذج أو تيليجرام."
   />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    /* Fixes requested:
+       1) keep only "اعرض النتيجة"
+       2) result stays hidden until button click
+       3) estimator replaces hero at top
+       4) original estimator box does not stretch after showing result
+    */
+
+    .estimator-top-section{
+      padding-top: 28px;
+    }
+
+    .estimator-hero-head{
+      max-width: 1080px;
+      margin: 0 auto 18px;
+    }
+
+    .estimator-hero-head .hero-badge{
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .estimator-hero-head h1{
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .estimator-hero-head p{
+      max-width: 760px;
+      line-height: 1.85;
+    }
+
+    .estimate-layout{
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 620px);
+      justify-content: center;
+      gap: 24px;
+      align-items: start;
+      direction: ltr;
+    }
+
+    .estimate-layout > *{
+      direction: rtl;
+    }
+
+    .estimate-result-wrap{
+      min-height: 1px;
+    }
+
+    .estimate-result-wrap.hidden{
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .estimate-result-card{
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 0;
+      position: sticky;
+      top: 96px;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(10,37,64,.12);
+    }
+
+    .estimate-result-card h3{
+      margin-bottom: 10px;
+    }
+
+    .estimate-result-card p{
+      margin-bottom: 10px;
+      line-height: 1.85;
+    }
+
+    .estimate-form-box{
+      width: 100%;
+      max-width: 620px;
+      margin: 0;
+    }
+
+    .calc-trigger-row{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .calc-box{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      min-height: 52px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: .96rem;
+      cursor: pointer;
+      transition: .2s ease;
+      user-select: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .calc-box:hover{
+      transform: translateY(-1px);
+    }
+
+    .result-hint-box{
+      display: block;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: .85rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px){
+      .estimate-layout{
+        grid-template-columns: 1fr;
+        max-width: none;
+        direction: rtl;
+      }
+
+      .estimate-result-wrap.hidden{
+        display: none;
+      }
+
+      .estimate-result-card,
+      .estimate-form-box{
+        max-width: none;
+        position: static;
+      }
+
+      .estimator-top-section{
+        padding-top: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -62,129 +205,6 @@
         <nav class="nav-tabs">
           <a href="#subjects" class="nav-tab active">التخصصات</a>
           <a href="#estimator" class="nav-tab">التقدير الأولي</a>
-           <link rel="stylesheet" href="../assets/style.css" />
-  <style>
-    /* Layout fix: keep estimator box size stable after showing result */
-    .estimate-layout{
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 620px);
-      justify-content: center;
-      gap: 24px;
-      align-items: start;
-      direction: ltr;
-    }
-
-    .estimate-layout > *{
-      direction: rtl;
-    }
-
-    .estimate-result-wrap{
-      min-height: 1px;
-    }
-
-    .estimate-result-wrap.hidden{
-      visibility: hidden;
-    }
-
-    .estimate-result-card{
-      display: block;
-      width: 100%;
-      max-width: 360px;
-      margin: 0;
-      position: sticky;
-      top: 96px;
-      background: linear-gradient(180deg,#f8fbff 0%, #eef4ff 100%);
-      border: 1px solid #cfe0ff;
-      color: #173b66;
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 18px 40px rgba(10,37,64,.12);
-    }
-
-    .estimate-result-card h3{
-      margin-bottom: 10px;
-      color: #102b4d;
-    }
-
-    .estimate-result-card p{
-      margin-bottom: 10px;
-      line-height: 1.85;
-      color: #34557d;
-    }
-
-    .estimate-result-card strong{
-      color: #102b4d;
-    }
-
-    .estimate-form-box{
-      width: 100%;
-      max-width: 620px;
-      margin: 0;
-    }
-
-    .calc-trigger-row{
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .calc-box{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 180px;
-      min-height: 52px;
-      padding: 12px 18px;
-      border-radius: 16px;
-      background: #ffffff;
-      color: #12335b;
-      border: 1px solid rgba(255,255,255,.22);
-      font-weight: 800;
-      font-size: .96rem;
-      cursor: pointer;
-      transition: .2s ease;
-      box-shadow: 0 10px 24px rgba(12,34,58,.12);
-      user-select: none;
-    }
-
-    .calc-box:hover{
-      transform: translateY(-1px);
-      background: #f8fbff;
-    }
-
-    .result-hint-box{
-      display: block;
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.86);
-      font-size: .85rem;
-      line-height: 1.7;
-    }
-
-    @media (max-width: 980px){
-      .estimate-layout{
-        grid-template-columns: 1fr;
-        max-width: none;
-        direction: rtl;
-      }
-
-      .estimate-result-wrap.hidden{
-        display: none;
-      }
-
-      .estimate-result-card,
-      .estimate-form-box{
-        max-width: none;
-        position: static;
-      }
-    }
-  </style>
           <a href="#contact" class="nav-tab">التواصل</a>
         </nav>
       </div>
@@ -202,43 +222,15 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-badge">وجهة واضحة · تعامل مهني · تواصل سريع ومتابعة شخصية</div>
-      <h1>مساعدك الأكاديمي<br /><span>في مختلف التخصصات الجامعية</span></h1>
-      <p>
-        هذا الموقع يركّز على ما تحتاجه فعلاً:
-        التخصصات التي يمكننا المساعدة فيها، تقدير أولي لحجم العمل والوقت، ثم انتقال مباشر إلى نموذج التواصل أو تيليجرام.
-      </p>
-
-      <div class="hero-ctas">
-        <a href="#subjects" class="btn btn-primary">استعرض التخصصات</a>
-        <a href="#contact" class="btn btn-outline">تواصل معنا</a>
-      </div>
-    </section>
-
-    <div class="stats-row">
-      <div class="stat">
-        <div class="val">12+</div>
-        <div class="label">تخصصات رئيسية</div>
-      </div>
-      <div class="stat">
-        <div class="val">واضح</div>
-        <div class="label">تنظيم بسيط وسريع</div>
-      </div>
-      <div class="stat">
-        <div class="val">مهني</div>
-        <div class="label">طابع أكاديمي محترف</div>
-      </div>
-      <div class="stat">
-        <div class="val">مباشر</div>
-        <div class="label">نموذج + تيليجرام</div>
-      </div>
-    </div>
-
-    <section class="section" id="estimator">
-      <div class="section-header">
-        <h2>تقدير أولي لحجم العمل والوقت</h2>
-        <p>بدل عرض تكلفة، هذا القسم يعطي تصورًا أوليًا عن حجم العمل المناسب والزمن المتوقع للبدء.</p>
+    <section class="section estimator-top-section" id="estimator">
+      <div class="estimator-hero-head">
+        <div class="hero-badge">وجهة واضحة · تعامل مهني · تواصل سريع ومتابعة شخصية</div>
+        <h1>مساعدك الأكاديمي في مختلف التخصصات الجامعية</h1>
+        <p>
+          اختر عدد الصفحات والموعد والمستوى الأكاديمي، ثم اضغط على
+          <strong>اعرض النتيجة</strong>
+          ليظهر لك التقدير الأولي في صندوق منفصل بدون أن يتمدد الصندوق الأصلي.
+        </p>
       </div>
 
       <div class="estimate-layout">
@@ -273,16 +265,34 @@
           </select>
 
           <div class="calc-trigger-row">
-            <button type="button" id="calculate-btn" class="btn btn-primary">إحسب</button>
             <button type="button" id="show-result-btn" class="calc-box">اعرض النتيجة</button>
           </div>
 
           <div class="result-hint-box">
-            بعد اختيار عدد الصفحات والموعد والمستوى الأكاديمي، اضغط على "اعرض النتيجة" ليظهر لك التقدير الأولي في صندوق منفصل بدون تمديد الصندوق الأصلي.
+            ستظهر النتيجة في الصندوق المنفصل على الجهة الأخرى، بينما يبقى صندوق التقدير الأساسي بنفس الحجم.
           </div>
         </div>
       </div>
     </section>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="val">12+</div>
+        <div class="label">تخصصات رئيسية</div>
+      </div>
+      <div class="stat">
+        <div class="val">واضح</div>
+        <div class="label">تنظيم بسيط وسريع</div>
+      </div>
+      <div class="stat">
+        <div class="val">مهني</div>
+        <div class="label">طابع أكاديمي محترف</div>
+      </div>
+      <div class="stat">
+        <div class="val">مباشر</div>
+        <div class="label">نموذج + تيليجرام</div>
+      </div>
+    </div>
 
     <section class="section" id="contact">
       <div class="section-header">
@@ -396,7 +406,6 @@
     const pagesValue = document.getElementById('pages-value');
     const deadlineInput = document.getElementById('deadline');
     const levelInput = document.getElementById('level');
-    const calculateBtn = document.getElementById('calculate-btn');
     const showResultBtn = document.getElementById('show-result-btn');
     const resultWrap = document.getElementById('estimate-result-wrap');
 
@@ -462,7 +471,6 @@
     updatePagesLabel();
 
     pagesInput.addEventListener('input', updatePagesLabel);
-    calculateBtn.addEventListener('click', renderResult);
     showResultBtn.addEventListener('click', renderResult);
   })();
 </script>
