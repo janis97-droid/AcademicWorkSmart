@@ -232,20 +232,31 @@
     <section class="section" id="contact">
       <div class="section-header">
         <h2>יצירת קשר</h2>
-        <p>כאן יופיע טופס יצירת הקשר החיצוני, כאשר טלגרם נשאר ברור וזמין לידו.</p>
+        <p>מלא את הטופס או השתמש ישירות בטלגרם.</p>
       </div>
 
       <div class="contact-grid">
         <div class="estimator">
-          <label for="contact-subject">התחום שנבחר</label>
-          <input type="text" id="contact-subject" placeholder="התחום שבחרת יופיע כאן" />
+          <form action="https://formspree.io/f/mlgoazpy" method="POST">
+            <input type="hidden" name="language" value="Hebrew" />
+
+            <label for="contact-name">שם</label>
+            <input type="text" id="contact-name" name="name" placeholder="השם המלא שלך" required />
+
+            <label for="contact-method">טלגרם או אימייל</label>
+            <input type="text" id="contact-method" name="contact" placeholder="@username או email@example.com" required />
+
+            <label for="contact-subject">התחום שנבחר</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="התחום שבחרת יופיע כאן" />
+
+            <label for="contact-details">פרטי הבקשה</label>
+            <textarea id="contact-details" name="details" rows="6" placeholder="כתוב את פרטי הבקשה, מספר עמודים, מועד סיום, וכל הערה נוספת" required></textarea>
+
+            <button type="submit" class="btn btn-primary">שלח בקשה</button>
+          </form>
 
           <div class="file-note">
-            הדבק כאן את קוד טופס יצירת הקשר החיצוני שיופק מהשירות שבו תשתמש.
-          </div>
-
-          <div class="success-msg">
-            זו רק תשתית הבסיס. בשלב הבא נשלב בתוך האזור הזה את טופס יצירת הקשר האמיתי.
+            הבקשה תישלח ישירות לתיבת Formspree שמחוברת לקישור הזה.
           </div>
         </div>
 
