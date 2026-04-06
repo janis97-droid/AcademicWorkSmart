@@ -238,27 +238,7 @@
 
       <div class="contact-grid">
         <div class="estimator">
-          <form action="https://formspree.io/f/mlgoazpy" method="POST">
-            <input type="hidden" name="language" value="English" />
-
-            <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Your full name" required />
-
-            <label for="contact-method">Telegram or email</label>
-            <input type="text" id="contact-method" name="contact" placeholder="@username or email@example.com" required />
-
-            <label for="contact-subject">Selected field</label>
-            <input type="text" id="contact-subject" name="subject" placeholder="The field you chose will appear here" />
-
-            <label for="contact-details">Request details</label>
-            <textarea id="contact-details" name="details" rows="6" placeholder="Write your request details, page count, deadline, and any extra notes" required></textarea>
-
-            <button type="submit" class="btn btn-primary">Send request</button>
-          </form>
-
-          <div class="file-note">
-            The request will be sent directly to the Formspree inbox connected to this link.
-          </div>
+          <div id="contact-form-root"></div>
         </div>
 
         <div class="contact-side">
@@ -289,6 +269,7 @@
   </div>
 </div>
 
+<script src="../assets/form-embed.js"></script>
 <script src="../assets/main.js"></script>
 </body>
 </html>
