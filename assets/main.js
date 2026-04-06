@@ -120,3 +120,4 @@ document.querySelectorAll('[data-subject]').forEach((card) => {
     if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
