@@ -157,8 +157,77 @@ a{text-decoration:none;color:inherit}
   flex-wrap:wrap;
 }
 
+.topbar-left{
+  gap:18px;
+}
+
+.topbar-brand,
+.topbar .sidebar-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0;
+  margin:0;
+  border:none;
+  flex-shrink:0;
+  background:transparent;
+}
+
+.topbar-brand .logo-mark,
+.topbar .sidebar-logo .logo-mark{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  font-weight:800;
+  box-shadow:var(--shadow-sm);
+}
+
+.topbar-brand .logo-stack,
+.topbar .sidebar-logo .logo-stack{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  line-height:1;
+}
+
+.topbar-brand .logo-text,
+.topbar .sidebar-logo .logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  color:var(--navy);
+}
+
+.topbar-brand .logo-sub,
+.topbar .sidebar-logo .logo-sub{
+  margin-top:0;
+  font-size:.7rem;
+  line-height:1.4;
+  color:var(--muted);
+}
+
+/* Fallback text brand if no logo node exists in the topbar */
+.topbar-left:not(:has(.topbar-brand,.sidebar-logo))::before{
+  content:"AcademicWorkSmart";
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1;
+  white-space:nowrap;
+}
+
+.topbar-left .nav-tabs{
+  flex:1 1 auto;
+  min-width:0;
+}
+
 .nav-tabs{
   display:flex;
+  align-items:center;
   gap:8px;
   flex-wrap:wrap;
 }
@@ -579,7 +648,20 @@ input[type="range"]{
     padding-inline:16px;
   }
 
+  .topbar-left{
+    gap:12px;
+  }
+
+  .topbar-left:not(:has(.topbar-brand,.sidebar-logo))::before{
+    font-size:1.1rem;
+  }
+
+  .topbar-brand .logo-text,
+  .topbar .sidebar-logo .logo-text,
+  .logo-text{
+    font-size:1.1rem;
+  }
+
   .hero{padding:32px 22px}
   .stats-row{grid-template-columns:1fr}
-  .logo-text{font-size:1.55rem}
 }
