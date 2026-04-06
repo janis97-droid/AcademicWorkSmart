@@ -883,3 +883,225 @@ input[type="range"]{
     position:static;
   }
 }
+
+
+
+/* ===== v5: smaller centered blue boxes, narrower layout, cleaner result panel ===== */
+
+/* Keep main sections from stretching full-screen */
+.section,
+.hero,
+.stats-row,
+.footer{
+  max-width:1280px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  width:calc(100% - 40px);
+}
+
+/* Contact / estimator area should not span the whole viewport */
+.contact-grid{
+  max-width:1180px;
+  margin-inline:auto;
+  grid-template-columns:1fr;
+}
+
+/* Blue estimator box smaller and centered */
+.contact-grid > .estimator,
+.estimator{
+  max-width:1080px;
+  margin-inline:auto;
+  width:100%;
+  padding:26px 28px;
+  border-radius:24px;
+}
+
+/* Slightly tighter fields so the box feels smaller */
+.estimator select,
+.estimator input[type="text"],
+.estimator input[type="email"],
+.estimator input[type="tel"],
+.estimator input[type="number"],
+.estimator textarea{
+  max-width:100%;
+  padding:11px 13px;
+  border-radius:13px;
+}
+
+.estimator label{
+  margin-bottom:7px;
+}
+
+/* Button row / click box area */
+.estimator .calc-trigger-row{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+/* If you add a dedicated clickable box/button, this styles it */
+.calc-box,
+.estimator .calc-box,
+.result-trigger,
+.estimator .result-trigger{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  min-height:54px;
+  padding:12px 18px;
+  border-radius:16px;
+  background:#ffffff;
+  color:#12335b;
+  border:1px solid rgba(255,255,255,.22);
+  font-weight:800;
+  font-size:.96rem;
+  cursor:pointer;
+  transition:.2s ease;
+  box-shadow:0 10px 24px rgba(12,34,58,.12);
+  user-select:none;
+}
+
+.calc-box:hover,
+.estimator .calc-box:hover,
+.result-trigger:hover,
+.estimator .result-trigger:hover{
+  transform:translateY(-1px);
+  background:#f8fbff;
+}
+
+/* Existing calculate button stays compact */
+.estimator .btn-primary,
+.estimator .btn-navy,
+.estimator button.btn-primary,
+.estimator button.btn-navy{
+  min-width:150px;
+}
+
+/* Result box itself: narrower, cleaner, not too large */
+.success-msg{
+  max-width:380px;
+  width:100%;
+  padding:22px 22px;
+  border-radius:20px;
+}
+
+/* When a result exists, show a more balanced two-box layout */
+.estimator:has(.success-msg:not(:empty)){
+  display:grid;
+  direction:ltr;
+  grid-template-columns:minmax(280px,380px) minmax(0,640px);
+  justify-content:center;
+  gap:22px 26px;
+  align-items:start;
+  max-width:1080px;
+  margin-inline:auto;
+}
+
+.estimator:has(.success-msg:not(:empty)) > *{
+  direction:rtl;
+}
+
+.estimator:has(.success-msg:not(:empty)) > .success-msg{
+  grid-column:1;
+  grid-row:1 / span 999;
+  margin-top:0;
+  align-self:start;
+  position:sticky;
+  top:96px;
+}
+
+.estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+  grid-column:2;
+}
+
+/* Make the content inside result box look like the old removed panel */
+.success-msg h3{
+  font-size:1.3rem;
+  margin-bottom:8px;
+}
+
+.success-msg p{
+  font-size:.92rem;
+  line-height:1.8;
+}
+
+/* Optional helper box under the calculate controls */
+.result-hint-box{
+  display:block;
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.86);
+  font-size:.85rem;
+  line-height:1.7;
+}
+
+/* Large screens should feel contained */
+@media (min-width:1500px){
+  .contact-grid{
+    max-width:1120px;
+  }
+
+  .contact-grid > .estimator,
+  .estimator{
+    max-width:1020px;
+  }
+
+  .estimator:has(.success-msg:not(:empty)){
+    grid-template-columns:minmax(280px,360px) minmax(0,610px);
+  }
+}
+
+/* Tablet/mobile stack */
+@media (max-width:980px){
+  .section,
+  .hero,
+  .stats-row,
+  .footer{
+    width:calc(100% - 32px);
+  }
+
+  .contact-grid{
+    max-width:none;
+  }
+
+  .contact-grid > .estimator,
+  .estimator{
+    max-width:none;
+    padding:22px 18px;
+  }
+
+  .estimator:has(.success-msg:not(:empty)){
+    grid-template-columns:1fr;
+    direction:rtl;
+    max-width:none;
+  }
+
+  .estimator:has(.success-msg:not(:empty)) > .success-msg,
+  .estimator:has(.success-msg:not(:empty)) > :not(.success-msg){
+    grid-column:1;
+    position:static;
+    max-width:none;
+  }
+
+  .success-msg{
+    max-width:none;
+  }
+}
+
+/* ===== IMPORTANT IMPLEMENTATION NOTE =====
+To get the clickable box behavior you asked for, your HTML should contain a trigger element like:
+<div class="calc-trigger-row">
+  <button class="btn btn-primary">إحسب</button>
+  <button type="button" class="calc-box">عرض النتيجة</button>
+</div>
+
+And your JS should copy/show the old removed panel content inside .success-msg after calculation.
+This stylesheet is fully ready for that structure.
+===== */
