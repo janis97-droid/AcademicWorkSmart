@@ -108,7 +108,76 @@
       </div>
     </div>
 
-    <section class="section" id="subjects">
+    <section class="section" id="estimator">
+      <div class="section-header">
+        <h2>تقدير أولي لحجم العمل والوقت</h2>
+        <p>بدل عرض تكلفة، هذا القسم يعطي تصورًا أوليًا عن حجم العمل المناسب والزمن المتوقع للبدء.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="estimator">
+          <label for="pages">عدد الصفحات: <span id="pages-value">5 صفحات</span></label>
+          <input type="range" id="pages" min="1" max="30" value="5" step="1" />
+
+          <label for="deadline">الموعد المطلوب</label>
+          <select id="deadline">
+            <option value="7+">أكثر من أسبوع</option>
+            <option value="3-7">خلال 3–7 أيام</option>
+            <option value="24-72">خلال 24–72 ساعة</option>
+          </select>
+
+          <label for="level">المستوى الأكاديمي</label>
+          <select id="level">
+            <option value="college">كلية / مهني</option>
+            <option value="university" selected>بكالوريوس</option>
+            <option value="graduate">دراسات عليا</option>
+          </select>
+        </div>
+
+        <div class="chat-cta">
+          <div>
+            <h3>النتيجة الأولية</h3>
+            <p><strong>حجم العمل:</strong> <span id="workload-value">نطاق خفيف</span></p>
+            <p><strong>الإطار الزمني:</strong> <span id="timing-value">إطار مريح</span></p>
+            <p><strong>ملاحظة:</strong> <span id="note-value">مناسب للأعمال القصيرة مع تعليمات واضحة.</span></p>
+            <p><strong>الأولوية:</strong> <span id="urgency-value">يمكن التخطيط بهدوء</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2>التواصل</h2>
+        <p>املأ النموذج أو استخدم تيليجرام مباشرة.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="estimator">
+          <div id="contact-form-root"></div>
+        </div>
+
+        <div class="contact-side">
+          <div class="chat-cta">
+            <div>
+              <h3>تواصل مباشر عبر تيليجرام</h3>
+              <p>للطلبات السريعة أو الأعمال المستعجلة، استخدم تيليجرام مباشرة.</p>
+            </div>
+
+            <div class="topbar-actions">
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                تيليجرام
+              </a>
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">
+                @AssistAcademicChat
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <section class="section" id="subjects">
       <div class="section-header">
         <h2>التخصصات التي نساعد فيها</h2>
         <p>اضغط على أي بطاقة، وسيتم تعبئة التخصص تلقائيًا في قسم التواصل.</p>
@@ -185,75 +254,6 @@
           <span class="subject-icon">🥗</span>
           <div class="subject-name">التغذية</div>
           <div class="subject-desc">دعم أكاديمي في موضوعات التغذية والصحة ضمن عرض أكاديمي مهني.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="estimator">
-      <div class="section-header">
-        <h2>تقدير أولي لحجم العمل والوقت</h2>
-        <p>بدل عرض تكلفة، هذا القسم يعطي تصورًا أوليًا عن حجم العمل المناسب والزمن المتوقع للبدء.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="estimator">
-          <label for="pages">عدد الصفحات: <span id="pages-value">5 صفحات</span></label>
-          <input type="range" id="pages" min="1" max="30" value="5" step="1" />
-
-          <label for="deadline">الموعد المطلوب</label>
-          <select id="deadline">
-            <option value="7+">أكثر من أسبوع</option>
-            <option value="3-7">خلال 3–7 أيام</option>
-            <option value="24-72">خلال 24–72 ساعة</option>
-          </select>
-
-          <label for="level">المستوى الأكاديمي</label>
-          <select id="level">
-            <option value="college">كلية / مهني</option>
-            <option value="university" selected>بكالوريوس</option>
-            <option value="graduate">دراسات عليا</option>
-          </select>
-        </div>
-
-        <div class="chat-cta">
-          <div>
-            <h3>النتيجة الأولية</h3>
-            <p><strong>حجم العمل:</strong> <span id="workload-value">نطاق خفيف</span></p>
-            <p><strong>الإطار الزمني:</strong> <span id="timing-value">إطار مريح</span></p>
-            <p><strong>ملاحظة:</strong> <span id="note-value">مناسب للأعمال القصيرة مع تعليمات واضحة.</span></p>
-            <p><strong>الأولوية:</strong> <span id="urgency-value">يمكن التخطيط بهدوء</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="section-header">
-        <h2>التواصل</h2>
-        <p>املأ النموذج أو استخدم تيليجرام مباشرة.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="estimator">
-          <div id="contact-form-root"></div>
-        </div>
-
-        <div class="contact-side">
-          <div class="chat-cta">
-            <div>
-              <h3>تواصل مباشر عبر تيليجرام</h3>
-              <p>للطلبات السريعة أو الأعمال المستعجلة، استخدم تيليجرام مباشرة.</p>
-            </div>
-
-            <div class="topbar-actions">
-              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                تيليجرام
-              </a>
-              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">
-                @AssistAcademicChat
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
