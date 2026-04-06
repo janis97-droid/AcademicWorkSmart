@@ -1,254 +1,122 @@
-const pageName = window.location.pathname.split('/').pop() || 'index.html';
-const isServicesPage = pageName.includes('services');
-const currentLang = document.documentElement.lang || 'en';
-
-const langTargets = {
-  index: { ar: '../ar/index.html', he: '../he/index.html', en: '../en/index.html' },
-  services: { ar: '../ar/services.html', he: '../he/services.html', en: '../en/services.html' }
+const langMap = {
+  ar: '../ar/index.html',
+  he: '../he/index.html',
+  en: '../en/index.html'
 };
 
-const uiCopy = {
-  ar: {
-    home: 'الرئيسية',
-    services: 'الخدمات',
-    contact: 'تواصل',
-    previewTitle: 'الخدمات أصبحت في صفحة مستقلة',
-    previewText: 'نقلنا قائمة الخدمات إلى صفحة منفصلة حتى تصبح الصفحة الرئيسية أخف وأسهل في التصفح، مع إبقاء التواصل والتقدير السعري أوضح وأكثر بروزًا.',
-    previewButton: 'اذهب إلى صفحة الخدمات',
-    tags: ['بحث', 'مقالة', 'مشروع', 'تلخيص'],
-    sending: '...جاري الإرسال',
-    success: 'تم استلام طلبك! سنتواصل معك قريبًا.',
-    error: 'حدث خطأ، حاول مجددًا أو تواصل معنا مباشرة.'
-  },
-  he: {
-    home: 'ראשי',
-    services: 'שירותים',
-    contact: 'צור קשר',
-    previewTitle: 'השירותים עברו לעמוד נפרד',
-    previewText: 'העברנו את רשימת השירותים לעמוד ייעודי כדי שדף הבית יהיה נקי וברור יותר, וכדי שיצירת הקשר והפנייה בטלגרם יהיו בולטים יותר.',
-    previewButton: 'פתח את עמוד השירותים',
-    tags: ['מחקר', 'סמינריון', 'פרויקט', 'סיכום'],
-    sending: '...שולח',
-    success: 'הבקשה התקבלה! נחזור אליך בקרוב.',
-    error: 'אירעה שגיאה. נסה שוב או צור קשר ישירות.'
-  },
-  en: {
-    home: 'Home',
-    services: 'Services',
-    contact: 'Contact',
-    previewTitle: 'Services now have a dedicated page',
-    previewText: 'The services list was moved to a separate page so the homepage feels lighter, while the contact form and Telegram action stay more visible.',
-    previewButton: 'Open Services Page',
-    tags: ['Research', 'Essay', 'Project', 'Summary'],
-    sending: 'Sending...',
-    success: 'Your request was received. We will contact you soon.',
-    error: 'Something went wrong. Please try again or contact us directly.'
-  }
-};
-
-const copy = uiCopy[currentLang] || uiCopy.en;
-
-// Language switcher
-document.querySelectorAll('.lang-btn').forEach(btn => {
+document.querySelectorAll('.lang-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
     const lang = btn.dataset.lang;
-    const map = isServicesPage ? langTargets.services : langTargets.index;
-    if (map[lang]) window.location.href = map[lang];
+    if (langMap[lang]) window.location.href = langMap[lang];
   });
 });
 
-// Logo enhancement
-(function upgradeLogo() {
-  const sidebarLogo = document.querySelector('.sidebar-logo');
-  const logoText = sidebarLogo?.querySelector('.logo-text');
-  if (!sidebarLogo || !logoText || sidebarLogo.querySelector('.logo-lockup')) return;
+const pagesInput = document.getElementById('pages');
+const deadlineInput = document.getElementById('deadline');
+const levelInput = document.getElementById('level');
+const pagesValue = document.getElementById('pages-value');
+const workloadValue = document.getElementById('workload-value');
+const timingValue = document.getElementById('timing-value');
+const noteValue = document.getElementById('note-value');
+const urgencyValue = document.getElementById('urgency-value');
 
-  const logoSub = sidebarLogo.querySelector('.logo-sub');
-  const lockup = document.createElement('div');
-  lockup.className = 'logo-lockup';
+function getCopy(lang) {
+  const map = {
+    ar: {
+      low: 'نطاق خفيف',
+      medium: 'نطاق متوسط',
+      high: 'نطاق كبير',
+      standard: 'إطار مريح',
+      tight: 'إطار ضيق',
+      urgent: 'عاجل',
+      noteEasy: 'مناسب للأعمال القصيرة مع تعليمات واضحة.',
+      noteMid: 'يفضّل إرسال التعليمات الكاملة مبكرًا.',
+      noteHard: 'يُنصح بالتواصل المباشر سريعًا لإدارة الوقت.',
+      urgencyStandard: 'يمكن التخطيط بهدوء',
+      urgencyTight: 'يحتاج بدءًا سريعًا',
+      urgencyUrgent: 'الأولوية للتواصل المباشر',
+      pagesSuffix: 'صفحات'
+    },
+    he: {
+      low: 'היקף קל',
+      medium: 'היקף בינוני',
+      high: 'היקף רחב',
+      standard: 'מסגרת נוחה',
+      tight: 'מסגרת צפופה',
+      urgent: 'דחוף',
+      noteEasy: 'מתאים לעבודות קצרות עם הנחיות ברורות.',
+      noteMid: 'עדיף לשלוח את כל ההנחיות מוקדם.',
+      noteHard: 'מומלץ ליצור קשר ישיר במהירות כדי לנהל זמן.',
+      urgencyStandard: 'אפשר לתכנן בנחת',
+      urgencyTight: 'דורש התחלה מהירה',
+      urgencyUrgent: 'עדיפות לפנייה ישירה',
+      pagesSuffix: 'עמודים'
+    },
+    en: {
+      low: 'Light scope',
+      medium: 'Medium scope',
+      high: 'Extended scope',
+      standard: 'Comfortable timeline',
+      tight: 'Tight timeline',
+      urgent: 'Urgent',
+      noteEasy: 'Suitable for shorter work with clear instructions.',
+      noteMid: 'It is better to send the full instructions early.',
+      noteHard: 'Direct contact is recommended to manage timing.',
+      urgencyStandard: 'Can be planned calmly',
+      urgencyTight: 'Needs a fast start',
+      urgencyUrgent: 'Direct contact is the priority',
+      pagesSuffix: 'pages'
+    }
+  };
 
-  const mark = document.createElement('div');
-  mark.className = 'logo-mark';
-  mark.textContent = 'A';
-
-  logoText.parentNode.insertBefore(lockup, logoText);
-  lockup.appendChild(mark);
-  lockup.appendChild(logoText);
-  if (logoSub) sidebarLogo.appendChild(logoSub);
-})();
-
-// Inject visible nav tabs
-(function injectNav() {
-  const topbar = document.querySelector('.topbar');
-  if (!topbar || topbar.querySelector('.nav-tabs')) return;
-
-  const langSwitcher = topbar.querySelector('.lang-switcher');
-  const actions = topbar.querySelector('.topbar-actions');
-
-  const left = document.createElement('div');
-  left.className = 'topbar-left';
-  const nav = document.createElement('nav');
-  nav.className = 'nav-tabs';
-  nav.innerHTML = `
-    <a href="index.html" class="nav-tab ${!isServicesPage ? 'active' : ''}">${copy.home}</a>
-    <a href="services.html" class="nav-tab ${isServicesPage ? 'active' : ''}">${copy.services}</a>
-    <a href="index.html#contact" class="nav-tab">${copy.contact}</a>
-  `;
-  left.appendChild(nav);
-
-  const right = document.createElement('div');
-  right.className = 'topbar-right';
-  if (langSwitcher) right.appendChild(langSwitcher);
-  if (actions) right.appendChild(actions);
-
-  topbar.innerHTML = '';
-  topbar.appendChild(left);
-  topbar.appendChild(right);
-})();
-
-// Homepage: move subjects to a separate page
-(function replaceHomepageServicesSection() {
-  if (isServicesPage) return;
-  const subjectSection = document.getElementById('subjects');
-  const heroBrowseBtn = document.querySelector('.hero-ctas a[href="#subjects"]');
-  if (heroBrowseBtn) heroBrowseBtn.setAttribute('href', 'services.html');
-  if (!subjectSection || subjectSection.dataset.replaced === '1') return;
-
-  subjectSection.dataset.replaced = '1';
-  subjectSection.innerHTML = `
-    <div class="services-preview">
-      <h3>${copy.previewTitle}</h3>
-      <p>${copy.previewText}</p>
-      <div class="preview-tags">${copy.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
-      <a href="services.html" class="btn btn-primary">${copy.previewButton}</a>
-    </div>
-  `;
-})();
-
-// Homepage: place form and Telegram card next to each other
-(function mergeContactAndTelegram() {
-  if (isServicesPage) return;
-  const contactSection = document.getElementById('contact');
-  const formCard = contactSection?.querySelector('.estimator');
-  const chatSection = Array.from(document.querySelectorAll('.section')).find(section => section.querySelector('.chat-cta'));
-  const chatCta = chatSection?.querySelector('.chat-cta');
-
-  if (!contactSection || !formCard || !chatCta || contactSection.querySelector('.contact-grid')) return;
-
-  const grid = document.createElement('div');
-  grid.className = 'contact-grid';
-
-  const side = document.createElement('div');
-  side.className = 'contact-side';
-  side.appendChild(chatCta);
-
-  grid.appendChild(formCard);
-  grid.appendChild(side);
-  contactSection.appendChild(grid);
-
-  if (chatSection) chatSection.remove();
-})();
-
-// Price estimator
-const typeSelect  = document.getElementById('work-type');
-const levelSelect = document.getElementById('level');
-const pagesRange  = document.getElementById('pages');
-const pagesVal    = document.getElementById('pages-val');
-const priceOutput = document.getElementById('price-output');
-
-const priceMatrix = {
-  essay:       { college: [80,150],   university: [120,220],  graduate: [200,380]  },
-  research:    { college: [150,280],  university: [250,450],  graduate: [400,700]  },
-  summary:     { college: [50,100],   university: [80,150],   graduate: [120,220]  },
-  project:     { college: [200,400],  university: [350,650],  graduate: [600,1100] },
-  review:      { college: [100,180],  university: [160,300],  graduate: [250,480]  },
-  analysis:    { college: [120,220],  university: [200,380],  graduate: [350,650]  },
-  assignment:  { college: [60,120],   university: [100,200],  graduate: [160,320]  },
-  presentation:{ college: [80,140],   university: [130,240],  graduate: [200,380]  },
-};
-
-function updatePrice() {
-  if (!pagesRange || !priceOutput) return;
-  const pages = parseInt(pagesRange.value || '5', 10);
-  if (pagesVal) pagesVal.textContent = pages;
-  const type = typeSelect ? typeSelect.value : 'research';
-  const level = levelSelect ? levelSelect.value : 'university';
-  const base = (priceMatrix[type] || priceMatrix.research)[level] || [150,300];
-  const scale = 1 + (pages - 1) * 0.65;
-  const low = Math.round(base[0] * scale / 10) * 10;
-  const high = Math.round(base[1] * scale / 10) * 10;
-  priceOutput.textContent = `${low}–${high} ₪`;
+  return map[lang] || map.en;
 }
 
-if (typeSelect) typeSelect.addEventListener('change', updatePrice);
-if (levelSelect) levelSelect.addEventListener('change', updatePrice);
-if (pagesRange) pagesRange.addEventListener('input', updatePrice);
-updatePrice();
+function updateEstimate() {
+  if (!pagesInput || !deadlineInput || !levelInput) return;
 
-// Service cards
-document.querySelectorAll('.subject-card').forEach(card => {
+  const copy = getCopy(document.documentElement.lang || 'en');
+  const pages = parseInt(pagesInput.value || '5', 10);
+  const deadline = deadlineInput.value;
+  const level = levelInput.value;
+
+  if (pagesValue) pagesValue.textContent = `${pages} ${copy.pagesSuffix}`;
+
+  let workload = copy.low;
+  if (pages >= 8 || level === 'graduate') workload = copy.medium;
+  if (pages >= 14 || (level === 'graduate' && pages >= 10)) workload = copy.high;
+
+  let timing = copy.standard;
+  if (deadline === '3-7') timing = copy.tight;
+  if (deadline === '24-72') timing = copy.urgent;
+
+  let note = copy.noteEasy;
+  if (workload === copy.medium || timing === copy.tight) note = copy.noteMid;
+  if (workload === copy.high || timing === copy.urgent) note = copy.noteHard;
+
+  let urgency = copy.urgencyStandard;
+  if (deadline === '3-7') urgency = copy.urgencyTight;
+  if (deadline === '24-72') urgency = copy.urgencyUrgent;
+
+  if (workloadValue) workloadValue.textContent = workload;
+  if (timingValue) timingValue.textContent = timing;
+  if (noteValue) noteValue.textContent = note;
+  if (urgencyValue) urgencyValue.textContent = urgency;
+}
+
+if (pagesInput) pagesInput.addEventListener('input', updateEstimate);
+if (deadlineInput) deadlineInput.addEventListener('change', updateEstimate);
+if (levelInput) levelInput.addEventListener('change', updateEstimate);
+
+updateEstimate();
+
+document.querySelectorAll('[data-subject]').forEach((card) => {
   card.addEventListener('click', () => {
-    const subject = card.dataset.subject;
-    if (isServicesPage && subject) {
-      window.location.href = `index.html?subject=${encodeURIComponent(subject)}#contact`;
-      return;
-    }
-    const estimatorSection = document.getElementById('estimator');
-    if (estimatorSection) estimatorSection.scrollIntoView({ behavior: 'smooth' });
-    if (typeSelect && subject && typeSelect.querySelector(`option[value="${subject}"]`)) {
-      typeSelect.value = subject;
-      updatePrice();
-    }
+    const subject = card.dataset.subject || '';
+    const field = document.getElementById('contact-subject');
+    const contact = document.getElementById('contact');
+
+    if (field) field.value = subject;
+    if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
-(function presetSubjectFromQuery() {
-  const params = new URLSearchParams(window.location.search);
-  const subject = params.get('subject');
-  if (subject && typeSelect && typeSelect.querySelector(`option[value="${subject}"]`)) {
-    typeSelect.value = subject;
-    updatePrice();
-  }
-})();
-
-// Localized form submission
-const intakeForm = document.getElementById('intake-form');
-if (intakeForm) {
-  intakeForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = intakeForm.querySelector('button[type="submit"]');
-    const originalText = btn ? btn.textContent : '';
-    if (btn) {
-      btn.textContent = copy.sending;
-      btn.disabled = true;
-    }
-
-    const data = {
-      name: document.getElementById('intake-name')?.value || '',
-      contact: document.getElementById('intake-contact')?.value || '',
-      subject: document.getElementById('intake-subject')?.value || '',
-      level: document.getElementById('intake-level')?.value || '',
-      details: document.getElementById('intake-details')?.value || '',
-      date: new Date().toLocaleString(),
-      page: window.location.pathname
-    };
-
-    const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
-
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      intakeForm.innerHTML = `<div class="success-msg">${copy.success}</div>`;
-    } catch {
-      if (btn) {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }
-      alert(copy.error);
-    }
-  });
-}
