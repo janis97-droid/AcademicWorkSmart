@@ -456,8 +456,7 @@ a{text-decoration:none;color:inherit}
 }
 
 .subject-card,
-.estimator,
-.chat-cta{
+.estimator{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:22px;
@@ -552,53 +551,63 @@ input[type="range"]{
 }
 
 .success-msg{
-  margin-top:14px;
-  background:#ecfdf5;
-  border:1px solid #a7f3d0;
-  color:#065f46;
-  border-radius:16px;
-  padding:18px;
+  display:block;
+  margin-top:18px;
+  background:linear-gradient(135deg,#10253f 0%,#18355a 100%);
+  border:1px solid rgba(255,255,255,.08);
+  color:#fff;
+  border-radius:22px;
+  padding:28px;
   font-weight:700;
-  line-height:1.7;
+  line-height:1.8;
+  box-shadow:var(--shadow-sm);
+}
+
+.success-msg h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.success-msg p,
+.success-msg small,
+.success-msg span,
+.success-msg div{
+  color:rgba(255,255,255,.84);
+}
+
+.success-msg a{
+  color:#fff;
+  font-weight:700;
+  text-decoration:underline;
 }
 
 .contact-grid{
   display:grid;
-  grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+  grid-template-columns:1fr;
   gap:18px;
   align-items:start;
 }
 
-/* Keep the estimator/form first inside the contact section */
-.contact-grid > .estimator{order:1}
-.contact-grid > .contact-side{order:2}
+/* Keep the estimator/form first and full width */
+.contact-grid > .estimator{
+  order:1;
+  width:100%;
+}
+
+.contact-grid > .contact-side{
+  order:2;
+  display:none !important;
+}
 
 .contact-side{
-  display:grid;
+  display:none !important;
   gap:18px;
 }
 
 .chat-cta{
-  padding:28px;
-  background:linear-gradient(135deg,#10253f 0%,#18355a 100%);
-  color:#fff;
-}
-
-.chat-cta h3{
-  font-family:'Playfair Display',serif;
-  font-size:1.5rem;
-  margin-bottom:10px;
-}
-
-.chat-cta p{
-  font-size:.9rem;
-  line-height:1.8;
-  color:rgba(255,255,255,.76);
-  margin-bottom:16px;
-}
-
-.chat-cta a{
-  color:#fff;
+  display:none !important;
 }
 
 .footer{
@@ -664,4 +673,20 @@ input[type="range"]{
 
   .hero{padding:32px 22px}
   .stats-row{grid-template-columns:1fr}
+}
+
+/* Result block shown after user calculates */
+.estimator .success-msg{
+  animation:fadeSlideIn .28s ease;
+}
+
+@keyframes fadeSlideIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
