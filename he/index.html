@@ -4,277 +4,278 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AssistAcademic — העוזר האקדמי שלך</title>
-  <meta name="description" content="סיוע אקדמי מקצועי — מחקר, עבודות סמינריון, פרויקטים לאוניברסיטה ולמכללה." />
+  <meta
+    name="description"
+    content="סיוע אקדמי מקצועי במגוון תחומים אוניברסיטאיים, עם הערכה ראשונית להיקף העבודה ולזמן, ויצירת קשר ישירה דרך טופס או טלגרם."
+  />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
 
 <div class="app-shell">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-text">AssistAcademic</div>
-      <div class="logo-sub">העוזר האקדמי שלך<br/>مساعدك الأكاديمي · Your Academic Assistant</div>
+      <div class="logo-sub">העוזר האקדמי שלך<br />مساعدك الأكاديمي · Your Academic Assistant</div>
     </div>
 
     <div class="sidebar-section">
-      <h3>ביקורות סטודנטים</h3>
+      <h3>למה אנחנו?</h3>
       <div class="review-card">
-        <div class="reviewer">ר. מירה — אוניברסיטת חיפה</div>
-        <div class="stars">★★★★★</div>
-        <p>מחקר מצוין, נמסר בזמן ובאיכות גבוהה.</p>
+        <div class="reviewer">ממשק ברור</div>
+        <p>אתר פשוט ומסודר שמתמקד בתחומים האקדמיים וביצירת קשר מהירה בלי עומס מיותר.</p>
       </div>
       <div class="review-card">
-        <div class="reviewer">ח. כאלד — מכללת סח'נין</div>
-        <div class="stars">★★★★★</div>
-        <p>עזרו לי בפרויקט הגמר. השירות הטוב ביותר שניסיתי.</p>
+        <div class="reviewer">הצגה מקצועית</div>
+        <p>עיצוב מודרני עם אופי אקדמי שקט שמתאים לאוניברסיטאות ולמכללות.</p>
       </div>
       <div class="review-card">
-        <div class="reviewer">נ. סמר — האוניברסיטה הפתוחה</div>
-        <div class="stars">★★★★☆</div>
-        <p>תקשורת מהירה ועבודה מסודרת. אשתמש שוב.</p>
+        <div class="reviewer">קשר ישיר</div>
+        <p>אפשר לעבור מבחירת תחום ליצירת קשר בתוך שניות דרך הטופס או טלגרם.</p>
       </div>
     </div>
 
     <div class="sidebar-section">
-      <h3>תחומי התמחות</h3>
+      <h3>תחומים נפוצים</h3>
       <div>
         <span class="field-pill">פסיכולוגיה</span>
+        <span class="field-pill">הנדסה</span>
         <span class="field-pill">חינוך והוראה</span>
-        <span class="field-pill">חשבונאות</span>
         <span class="field-pill">מנהל עסקים</span>
         <span class="field-pill">משפטים</span>
         <span class="field-pill">מדעי המחשב</span>
-        <span class="field-pill">בריאות הציבור</span>
-        <span class="field-pill">סוציולוגיה</span>
-        <span class="field-pill">תזונה ובריאות</span>
+        <span class="field-pill">חשבונאות</span>
         <span class="field-pill">סיעוד</span>
-        <span class="field-pill">הנדסה</span>
+        <span class="field-pill">בריאות הציבור</span>
         <span class="field-pill">כלכלה</span>
-        <span class="field-pill">היסטוריה וגיאוגרפיה</span>
-        <span class="field-pill">ספרות ושפות</span>
-        <span class="field-pill">מוזיקה ואמנות</span>
+        <span class="field-pill">סוציולוגיה</span>
+        <span class="field-pill">תזונה</span>
       </div>
     </div>
   </aside>
 
   <div class="main">
-
-    <!-- TOPBAR -->
     <header class="topbar">
-      <div class="lang-switcher">
-        <button class="lang-btn" data-lang="ar">عربي</button>
-        <button class="lang-btn active" data-lang="he">עברית</button>
-        <button class="lang-btn" data-lang="en">English</button>
+      <div class="topbar-left">
+        <nav class="nav-tabs">
+          <a href="#subjects" class="nav-tab active">תחומים</a>
+          <a href="#estimator" class="nav-tab">הערכה ראשונית</a>
+          <a href="#contact" class="nav-tab">יצירת קשר</a>
+        </nav>
       </div>
-      <div class="topbar-actions">
-        <a href="#estimator" class="btn btn-outline">הערכת מחיר</a>
-        <a href="#contact" class="btn btn-navy">צור קשר</a>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="ar">عربي</button>
+          <button class="lang-btn active" data-lang="he">עברית</button>
+          <button class="lang-btn" data-lang="en">English</button>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="#contact" class="btn btn-primary">התחל עכשיו</a>
+        </div>
       </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero-badge">סיוע אקדמי מקצועי · 100% סודי</div>
-      <h1>העוזר האקדמי שלך<br /><span>ממחקר ועד הגשה</span></h1>
-      <p>אנו מסייעים לסטודנטים באוניברסיטאות ובמכללות בהכנת עבודות מחקר, מסות ופרויקטים ברמה אקדמית מקצועית — בזמן ובסודיות מלאה.</p>
+      <div class="hero-badge">ממשק ברור · עיצוב מקצועי · קשר מהיר</div>
+      <h1>העוזר האקדמי שלך<br /><span>במגוון תחומים אוניברסיטאיים</span></h1>
+      <p>
+        האתר הזה מתמקד בדיוק במה שצריך:
+        התחומים שבהם אפשר לקבל עזרה, הערכה ראשונית של היקף העבודה והזמן, ואז מעבר ישיר לטופס יצירת הקשר או לטלגרם.
+      </p>
+
       <div class="hero-ctas">
-        <a href="#subjects" class="btn btn-primary">עיין בשירותים</a>
-        <a href="#estimator" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35);color:#fff;">חשב מחיר</a>
+        <a href="#subjects" class="btn btn-primary">עיין בתחומים</a>
+        <a href="#contact" class="btn btn-outline">צור קשר</a>
       </div>
     </section>
 
-    <!-- STATS -->
     <div class="stats-row">
-      <div class="stat"><div class="val">+200</div><div class="label">סטודנטים נעזרו</div></div>
-      <div class="stat"><div class="val">+15</div><div class="label">תחומים אקדמיים</div></div>
-      <div class="stat"><div class="val">98%</div><div class="label">שיעור שביעות רצון</div></div>
-      <div class="stat"><div class="val">סודי</div><div class="label">הפרטיות שלך שמורה</div></div>
+      <div class="stat">
+        <div class="val">12+</div>
+        <div class="label">תחומים עיקריים</div>
+      </div>
+      <div class="stat">
+        <div class="val">ברור</div>
+        <div class="label">ארגון פשוט ומהיר</div>
+      </div>
+      <div class="stat">
+        <div class="val">מקצועי</div>
+        <div class="label">אופי אקדמי מקצועי</div>
+      </div>
+      <div class="stat">
+        <div class="val">ישיר</div>
+        <div class="label">טופס + טלגרם</div>
+      </div>
     </div>
 
-    <!-- SUBJECTS -->
     <section class="section" id="subjects">
       <div class="section-header">
-        <h2>השירותים הזמינים</h2>
-        <p>לחץ על כל כרטיס כדי לבחור אותו במחשבון המחיר</p>
+        <h2>התחומים שבהם אנחנו מסייעים</h2>
+        <p>לחץ על כל כרטיס, והתחום ימולא אוטומטית באזור יצירת הקשר.</p>
       </div>
+
       <div class="subjects-grid">
-        <div class="subject-card" data-subject="research">
-          <span class="subject-icon">🔬</span>
-          <div class="subject-name">עבודת מחקר</div>
-          <div class="subject-desc">מחקר מתועד עם מקורות אמינים, ציטוט APA/MLA, עריכה סופית.</div>
-          <span class="subject-price">החל מ־₪150</span>
+        <div class="subject-card" data-subject="פסיכולוגיה">
+          <span class="subject-icon">🧠</span>
+          <div class="subject-name">פסיכולוגיה</div>
+          <div class="subject-desc">עבודות אקדמיות, דוחות, מחקרים וניתוח נושאים הקשורים לפסיכולוגיה.</div>
         </div>
-        <div class="subject-card" data-subject="essay">
-          <span class="subject-icon">📝</span>
-          <div class="subject-name">עבודה סמינריונית</div>
-          <div class="subject-desc">כתיבה מקצועית, טיעונים לוגיים, סגנון אקדמי תקין.</div>
-          <span class="subject-price">החל מ־₪80</span>
+
+        <div class="subject-card" data-subject="הנדסה">
+          <span class="subject-icon">🏗️</span>
+          <div class="subject-name">הנדסה</div>
+          <div class="subject-desc">סיוע בעבודות כתובות ואקדמיות בתחומי ההנדסה השונים.</div>
         </div>
-        <div class="subject-card" data-subject="project">
+
+        <div class="subject-card" data-subject="חינוך והוראה">
+          <span class="subject-icon">📚</span>
+          <div class="subject-name">חינוך והוראה</div>
+          <div class="subject-desc">מחקרים, מטלות וניתוחים אקדמיים הקשורים לחינוך, הוראה ופדגוגיה.</div>
+        </div>
+
+        <div class="subject-card" data-subject="מנהל עסקים">
+          <span class="subject-icon">💼</span>
+          <div class="subject-name">מנהל עסקים</div>
+          <div class="subject-desc">דוחות, מחקרים והצגות אקדמיות בניהול, ארגון ותכנון.</div>
+        </div>
+
+        <div class="subject-card" data-subject="משפטים">
+          <span class="subject-icon">⚖️</span>
+          <div class="subject-name">משפטים</div>
+          <div class="subject-desc">ארגון נושאים משפטיים אקדמיים בצורה מסודרת וברורה לפי דרישות הקורס.</div>
+        </div>
+
+        <div class="subject-card" data-subject="מדעי המחשב">
+          <span class="subject-icon">💻</span>
+          <div class="subject-name">מדעי המחשב</div>
+          <div class="subject-desc">עבודות אקדמיות עיוניות הקשורות למחשוב, מערכות ותחומים טכנולוגיים שונים.</div>
+        </div>
+
+        <div class="subject-card" data-subject="חשבונאות">
           <span class="subject-icon">📊</span>
-          <div class="subject-name">פרויקט גמר</div>
-          <div class="subject-desc">פרויקטים מקיפים: הצעה, מחקר, ניתוח, הצגה.</div>
-          <span class="subject-price">החל מ־₪350</span>
+          <div class="subject-name">חשבונאות</div>
+          <div class="subject-desc">מטלות ודוחות אקדמיים בחשבונאות ובמושגי יסוד פיננסיים.</div>
         </div>
-        <div class="subject-card" data-subject="summary">
-          <span class="subject-icon">📄</span>
-          <div class="subject-name">סיכום ותקציר</div>
-          <div class="subject-desc">סיכום מאמרים ומקורות אקדמיים בדיוק ובתמציתיות.</div>
-          <span class="subject-price">החל מ־₪50</span>
+
+        <div class="subject-card" data-subject="סיעוד">
+          <span class="subject-icon">🩺</span>
+          <div class="subject-name">סיעוד</div>
+          <div class="subject-desc">סיוע אקדמי בעבודות עיוניות ובדוחות הקשורים לסיעוד.</div>
         </div>
-        <div class="subject-card" data-subject="review">
-          <span class="subject-icon">🔍</span>
-          <div class="subject-name">סקירת ספרות</div>
-          <div class="subject-desc">Literature Review מקיפה עם ניתוח והשוואת מקורות.</div>
-          <span class="subject-price">החל מ־₪100</span>
+
+        <div class="subject-card" data-subject="בריאות הציבור">
+          <span class="subject-icon">🌍</span>
+          <div class="subject-name">בריאות הציבור</div>
+          <div class="subject-desc">נושאים בריאותיים וחברתיים עם הצגה אקדמית מסודרת וברורה.</div>
         </div>
-        <div class="subject-card" data-subject="analysis">
+
+        <div class="subject-card" data-subject="כלכלה">
           <span class="subject-icon">📈</span>
-          <div class="subject-name">ניתוח נתונים</div>
-          <div class="subject-desc">SPSS, Excel, ניתוח סטטיסטי, פרשנות תוצאות.</div>
-          <span class="subject-price">החל מ־₪120</span>
+          <div class="subject-name">כלכלה</div>
+          <div class="subject-desc">דוחות, ניתוחים ומחקרים אקדמיים בנושאים כלכליים שונים.</div>
         </div>
-        <div class="subject-card" data-subject="assignment">
-          <span class="subject-icon">✏️</span>
-          <div class="subject-name">מטלה אקדמית</div>
-          <div class="subject-desc">פתרון מטלות אישיות וקבוצתיות בכל סוגי הקורסים.</div>
-          <span class="subject-price">החל מ־₪60</span>
+
+        <div class="subject-card" data-subject="סוציולוגיה">
+          <span class="subject-icon">👥</span>
+          <div class="subject-name">סוציולוגיה</div>
+          <div class="subject-desc">עבודות אקדמיות בנושאים חברתיים, תאוריות וניתוחים קשורים.</div>
         </div>
-        <div class="subject-card" data-subject="presentation">
-          <span class="subject-icon">🎤</span>
-          <div class="subject-name">מצגת</div>
-          <div class="subject-desc">PowerPoint / Canva מקצועי עם הערות להצגה.</div>
-          <span class="subject-price">החל מ־₪90</span>
+
+        <div class="subject-card" data-subject="תזונה">
+          <span class="subject-icon">🥗</span>
+          <div class="subject-name">תזונה</div>
+          <div class="subject-desc">סיוע אקדמי בנושאי תזונה ובריאות במסגרת הצגה מקצועית וברורה.</div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="section section-alt">
-      <div class="section-header">
-        <h2>איך זה עובד?</h2>
-        <p>ארבעה שלבים פשוטים מהזמנה ועד מסירה</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step"><div class="step-num">01</div><h4>שלח פרטים</h4><p>סוג העבודה, האוניברסיטה, ההנחיות, המועד האחרון.</p></div>
-        <div class="step"><div class="step-num">02</div><h4>נבדוק ונציע מחיר</h4><p>נקרא את הפרטים ונשלח הערכת מחיר לפי היקף ורמה.</p></div>
-        <div class="step"><div class="step-num">03</div><h4>תשלום והתחלה</h4><p>לאחר הסכמה העבודה מתחילה מיד עם תקשורת שוטפת.</p></div>
-        <div class="step"><div class="step-num">04</div><h4>קבלה ועריכה</h4><p>תקבל את העבודה המלאה עם תיקונים חינמיים לפי הצורך.</p></div>
-      </div>
-    </section>
-
-    <!-- PRICE ESTIMATOR -->
     <section class="section" id="estimator">
       <div class="section-header">
-        <h2>הערכת מחיר</h2>
-        <p>המחיר משוער בלבד — המחיר הסופי נקבע לפי ההנחיות הממשיות</p>
+        <h2>הערכה ראשונית של היקף העבודה והזמן</h2>
+        <p>במקום להציג מחיר, האזור הזה נותן תמונה ראשונית של היקף העבודה והזמן המתאים להתחלה.</p>
       </div>
-      <div class="estimator">
-        <label for="work-type">סוג העבודה</label>
-        <select id="work-type">
-          <option value="essay">עבודה סמינריונית</option>
-          <option value="research" selected>עבודת מחקר</option>
-          <option value="summary">סיכום</option>
-          <option value="project">פרויקט גמר</option>
-          <option value="review">סקירת ספרות</option>
-          <option value="analysis">ניתוח נתונים</option>
-          <option value="assignment">מטלה אקדמית</option>
-          <option value="presentation">מצגת</option>
-        </select>
-        <label for="level">רמה אקדמית</label>
-        <select id="level">
-          <option value="college">מכללה / מקצועי</option>
-          <option value="university" selected>תואר ראשון</option>
-          <option value="graduate">לימודי תואר שני / שלישי</option>
-        </select>
-        <label for="pages">מספר עמודים: <span id="pages-val">5</span></label>
-        <input type="range" id="pages" min="1" max="30" value="5" step="1" />
-        <div class="price-display">
-          <div class="range-label">הערכה ראשונית</div>
-          <div class="price-range" id="price-output">₪250–₪450</div>
-          <div class="price-note">המחיר הסופי נקבע לאחר בחינת ההנחיות המלאות<br/>מספר זה לצורך אוריינטציה בלבד</div>
+
+      <div class="contact-grid">
+        <div class="estimator">
+          <label for="pages">מספר עמודים: <span id="pages-value">5 עמודים</span></label>
+          <input type="range" id="pages" min="1" max="30" value="5" step="1" />
+
+          <label for="deadline">מועד נדרש</label>
+          <select id="deadline">
+            <option value="7+">יותר משבוע</option>
+            <option value="3-7">תוך 3–7 ימים</option>
+            <option value="24-72">תוך 24–72 שעות</option>
+          </select>
+
+          <label for="level">רמה אקדמית</label>
+          <select id="level">
+            <option value="college">מכללה / מקצועי</option>
+            <option value="university" selected>תואר ראשון</option>
+            <option value="graduate">לימודים מתקדמים</option>
+          </select>
+        </div>
+
+        <div class="chat-cta">
+          <div>
+            <h3>תוצאה ראשונית</h3>
+            <p><strong>היקף עבודה:</strong> <span id="workload-value">היקף קל</span></p>
+            <p><strong>מסגרת זמן:</strong> <span id="timing-value">מסגרת נוחה</span></p>
+            <p><strong>הערה:</strong> <span id="note-value">מתאים לעבודות קצרות עם הנחיות ברורות.</span></p>
+            <p><strong>עדיפות:</strong> <span id="urgency-value">אפשר לתכנן בנחת</span></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- INTAKE FORM -->
-    <section class="section section-alt" id="contact">
+    <section class="section" id="contact">
       <div class="section-header">
-        <h2>שלח בקשה</h2>
-        <p>מלא את הטופס ונחזור אליך תוך שעות לאישור המחיר והפרטים</p>
+        <h2>יצירת קשר</h2>
+        <p>כאן יופיע טופס יצירת הקשר החיצוני, כאשר טלגרם נשאר ברור וזמין לידו.</p>
       </div>
-      <div class="estimator">
-        <form id="intake-form">
-          <label for="intake-name">שמך</label>
-          <input type="text" id="intake-name" placeholder="שם מלא" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);" required />
-          <label for="intake-contact">שם משתמש בטלגרם או אימייל</label>
-          <input type="text" id="intake-contact" placeholder="שם משתמש בטלגרם או כתובת אימייל" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);" required />
-          <label for="intake-subject">סוג העבודה</label>
-          <select id="intake-subject" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;">
-            <option>עבודת מחקר</option>
-            <option>עבודה סמינריונית</option>
-            <option>פרויקט גמר</option>
-            <option>סיכום</option>
-            <option>מטלה אקדמית</option>
-            <option>ניתוח נתונים</option>
-            <option>אחר</option>
-          </select>
-          <label for="intake-level">רמה אקדמית</label>
-          <select id="intake-level" style="width:100%;background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;">
-            <option>מכללה / מקצועי</option>
-            <option selected>תואר ראשון</option>
-            <option>לימודי תואר שני / שלישי</option>
-          </select>
-          <label for="intake-details">פרטים נוספים</label>
-          <textarea id="intake-details" rows="4" placeholder="מועד אחרון, הנחיות מיוחדות, מספר עמודים, שם הקורס..." style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;font-family:'Tajawal',sans-serif;font-size:0.88rem;margin-bottom:22px;color:var(--text);resize:vertical;"></textarea>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;padding:13px;">שלח בקשה</button>
-        </form>
-        <div class="file-note">
-          לשליחת קבצים (PDF, Word, תמונות): השתמש בטלגרם דרך <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">@AssistAcademicChat</a> או הדבק קישור Google Drive בשדה הפרטים למעלה. תמיכה בהעלאת קבצים ישירה — בקרוב.
-        </div>
-      </div>
-    </section>
 
-    <!-- TELEGRAM CTA -->
-    <section class="section">
-      <div class="chat-cta">
-        <div>
-          <h3>מעדיף קשר ישיר?</h3>
-          <p>שלח לנו הודעה בטלגרם דרך <strong>@AssistAcademicChat</strong> — נחזור תוך שעות ונעזור לך לסגור מחיר ופרטים.</p>
+      <div class="contact-grid">
+        <div class="estimator">
+          <label for="contact-subject">התחום שנבחר</label>
+          <input type="text" id="contact-subject" placeholder="התחום שבחרת יופיע כאן" />
+
+          <div class="file-note">
+            הדבק כאן את קוד טופס יצירת הקשר החיצוני שיופק מהשירות שבו תשתמש.
+          </div>
+
+          <div class="success-msg">
+            זו רק תשתית הבסיס. בשלב הבא נשלב בתוך האזור הזה את טופס יצירת הקשר האמיתי.
+          </div>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-          <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:8px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 240 240" fill="currentColor" aria-hidden="true">
-              <path d="M120,0C53.7,0,0,53.7,0,120s53.7,120,120,120s120-53.7,120-120S186.3,0,120,0z M176.6,82.2l-19.7,92.9 c-1.5,6.6-5.4,8.2-10.9,5.1l-30.2-22.3l-14.6,14.1c-1.6,1.6-3,3-6.1,3l2.2-31.3l57-51.5c2.5-2.2-0.5-3.5-3.8-1.3l-70.5,44.4 l-30.4-9.5c-6.6-2.1-6.8-6.6,1.4-9.8l118.8-45.8C172.9,74.7,178.4,77.7,176.6,82.2z"/>
-            </svg>
-            טלגרם
-          </a>
-          <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:var(--text);text-decoration:none;">@AssistAcademicChat</a>
+
+        <div class="contact-side">
+          <div class="chat-cta">
+            <div>
+              <h3>יצירת קשר ישירה דרך טלגרם</h3>
+              <p>לפניות מהירות או לעבודות דחופות, אפשר להשתמש ישירות בטלגרם.</p>
+            </div>
+
+            <div class="topbar-actions">
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                טלגרם
+              </a>
+              <a href="https://t.me/AssistAcademicChat" target="_blank" rel="noopener noreferrer">
+                @AssistAcademicChat
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <div>AssistAcademic © 2025</div>
-      <div>הפרטיות שלך היא העדיפות שלנו · סודיות מובטחת</div>
+      <div>AssistAcademic © 2026</div>
+      <div>ממשק פשוט · אופי מקצועי · יצירת קשר ברורה</div>
       <div><a href="../ar/index.html">عربي</a> · <a href="../en/index.html">English</a></div>
     </footer>
   </div>
 </div>
-
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/default';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
 
 <script src="../assets/main.js"></script>
 </body>
