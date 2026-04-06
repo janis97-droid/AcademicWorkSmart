@@ -38,19 +38,20 @@ a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-thumb{background:#c8d4e7;border-radius:10px}
 
-.app-shell{display:flex;min-height:100vh}
+/* Sidebar removed */
+.app-shell{
+  display:block;
+  min-height:100vh;
+}
 
 .sidebar{
-  width:var(--sidebar-w);
+  display:none !important;
+  width:0;
   flex-shrink:0;
-  background:linear-gradient(180deg,#11253f,#183152 70%);
-  color:#fff;
-  padding:28px 0;
-  position:sticky;
-  top:0;
-  height:100vh;
-  overflow-y:auto;
-  border-inline-end:1px solid rgba(255,255,255,.08);
+  padding:0;
+  height:0;
+  overflow:hidden;
+  border:none;
 }
 
 .sidebar-logo{
@@ -119,7 +120,20 @@ a{text-decoration:none;color:inherit}
 .main{
   flex:1;
   min-width:0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
 }
+
+/* Reorder sections so the estimator/form section comes before subjects,
+   and subjects render last after the form section */
+.main > *{order:0}
+.main > .topbar{order:0}
+.main > .hero{order:1}
+.main > .stats-row{order:2}
+.main > .section:has(.contact-grid){order:3}
+.main > .section:has(.subjects-grid){order:4}
+.main > .footer{order:5}
 
 .topbar{
   position:sticky;
@@ -486,6 +500,10 @@ input[type="range"]{
   align-items:start;
 }
 
+/* Keep the estimator/form first inside the contact section */
+.contact-grid > .estimator{order:1}
+.contact-grid > .contact-side{order:2}
+
 .contact-side{
   display:grid;
   gap:18px;
@@ -535,18 +553,15 @@ input[type="range"]{
 }
 
 @media (max-width:900px){
-  .app-shell{flex-direction:column}
+  .app-shell{display:block}
 
   .sidebar{
-    width:100%;
-    height:auto;
-    position:relative;
-    padding:20px;
-    border-inline-end:none;
+    display:none !important;
+    width:0;
+    height:0;
+    padding:0;
+    border:none;
   }
-
-  .sidebar-logo{padding:0 0 18px}
-  .sidebar-section{padding:0 0 18px}
 
   .topbar,.hero,.stats-row,.section,.footer{
     margin-inline:20px;
