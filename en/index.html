@@ -233,20 +233,31 @@
     <section class="section" id="contact">
       <div class="section-header">
         <h2>Contact</h2>
-        <p>The external contact form will be placed here, while Telegram stays clearly visible next to it.</p>
+        <p>Fill the form or use Telegram directly.</p>
       </div>
 
       <div class="contact-grid">
         <div class="estimator">
-          <label for="contact-subject">Selected field</label>
-          <input type="text" id="contact-subject" placeholder="The field you chose will appear here" />
+          <form action="https://formspree.io/f/mlgoazpy" method="POST">
+            <input type="hidden" name="language" value="English" />
+
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your full name" required />
+
+            <label for="contact-method">Telegram or email</label>
+            <input type="text" id="contact-method" name="contact" placeholder="@username or email@example.com" required />
+
+            <label for="contact-subject">Selected field</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="The field you chose will appear here" />
+
+            <label for="contact-details">Request details</label>
+            <textarea id="contact-details" name="details" rows="6" placeholder="Write your request details, page count, deadline, and any extra notes" required></textarea>
+
+            <button type="submit" class="btn btn-primary">Send request</button>
+          </form>
 
           <div class="file-note">
-            Paste the external contact form code here from the form service you plan to use.
-          </div>
-
-          <div class="success-msg">
-            This is only the base structure. In the next step we place the real contact form inside this section.
+            The request will be sent directly to the Formspree inbox connected to this link.
           </div>
         </div>
 
