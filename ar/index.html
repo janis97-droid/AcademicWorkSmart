@@ -232,20 +232,31 @@
     <section class="section" id="contact">
       <div class="section-header">
         <h2>التواصل</h2>
-        <p>سيتم هنا وضع نموذج التواصل الخارجي، مع إبقاء تيليجرام واضحًا ومباشرًا بجانبه.</p>
+        <p>املأ النموذج أو استخدم تيليجرام مباشرة.</p>
       </div>
 
       <div class="contact-grid">
         <div class="estimator">
-          <label for="contact-subject">التخصص المختار</label>
-          <input type="text" id="contact-subject" placeholder="سيظهر هنا التخصص الذي اخترته" />
+          <form action="https://formspree.io/f/mlgoazpy" method="POST">
+            <input type="hidden" name="language" value="Arabic" />
+
+            <label for="contact-name">الاسم</label>
+            <input type="text" id="contact-name" name="name" placeholder="اسمك الكامل" required />
+
+            <label for="contact-method">تيليجرام أو البريد الإلكتروني</label>
+            <input type="text" id="contact-method" name="contact" placeholder="@username أو email@example.com" required />
+
+            <label for="contact-subject">التخصص المختار</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="سيظهر هنا التخصص الذي اخترته" />
+
+            <label for="contact-details">تفاصيل الطلب</label>
+            <textarea id="contact-details" name="details" rows="6" placeholder="اكتب تفاصيل الطلب، عدد الصفحات، الموعد النهائي، وأي ملاحظات إضافية" required></textarea>
+
+            <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+          </form>
 
           <div class="file-note">
-            ضع هنا كود نموذج التواصل الخارجي الذي سيتم توليده من الخدمة التي ستستخدمها.
-          </div>
-
-          <div class="success-msg">
-            هذه قاعدة البناء فقط. في الخطوة التالية نركّب نموذج التواصل الحقيقي داخل هذا القسم.
+            سيتم إرسال الطلب مباشرة إلى صندوق Formspree المرتبط بهذا الرابط.
           </div>
         </div>
 
