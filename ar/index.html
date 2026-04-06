@@ -9,6 +9,128 @@
     content="مساعدة أكاديمية احترافية في مختلف التخصصات الجامعية، مع تقدير أولي لحجم العمل والوقت وتواصل مباشر عبر النموذج أو تيليجرام."
   />
   <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    /* Layout fix: keep estimator box size stable after showing result */
+    .estimate-layout{
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 620px);
+      justify-content: center;
+      gap: 24px;
+      align-items: start;
+      direction: ltr;
+    }
+
+    .estimate-layout > *{
+      direction: rtl;
+    }
+
+    .estimate-result-wrap{
+      min-height: 1px;
+    }
+
+    .estimate-result-wrap.hidden{
+      visibility: hidden;
+    }
+
+    .estimate-result-card{
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      margin: 0;
+      position: sticky;
+      top: 96px;
+      background: linear-gradient(180deg,#f8fbff 0%, #eef4ff 100%);
+      border: 1px solid #cfe0ff;
+      color: #173b66;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(10,37,64,.12);
+    }
+
+    .estimate-result-card h3{
+      margin-bottom: 10px;
+      color: #102b4d;
+    }
+
+    .estimate-result-card p{
+      margin-bottom: 10px;
+      line-height: 1.85;
+      color: #34557d;
+    }
+
+    .estimate-result-card strong{
+      color: #102b4d;
+    }
+
+    .estimate-form-box{
+      width: 100%;
+      max-width: 620px;
+      margin: 0;
+    }
+
+    .calc-trigger-row{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .calc-box{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 52px;
+      padding: 12px 18px;
+      border-radius: 16px;
+      background: #ffffff;
+      color: #12335b;
+      border: 1px solid rgba(255,255,255,.22);
+      font-weight: 800;
+      font-size: .96rem;
+      cursor: pointer;
+      transition: .2s ease;
+      box-shadow: 0 10px 24px rgba(12,34,58,.12);
+      user-select: none;
+    }
+
+    .calc-box:hover{
+      transform: translateY(-1px);
+      background: #f8fbff;
+    }
+
+    .result-hint-box{
+      display: block;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.86);
+      font-size: .85rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px){
+      .estimate-layout{
+        grid-template-columns: 1fr;
+        max-width: none;
+        direction: rtl;
+      }
+
+      .estimate-result-wrap.hidden{
+        display: none;
+      }
+
+      .estimate-result-card,
+      .estimate-form-box{
+        max-width: none;
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -119,8 +241,20 @@
         <p>بدل عرض تكلفة، هذا القسم يعطي تصورًا أوليًا عن حجم العمل المناسب والزمن المتوقع للبدء.</p>
       </div>
 
-      <div class="contact-grid">
-        <div class="estimator">
+      <div class="estimate-layout">
+        <div class="estimate-result-wrap hidden" id="estimate-result-wrap">
+          <div class="estimate-result-card" id="estimator-result" aria-live="polite">
+            <div>
+              <h3>النتيجة الأولية</h3>
+              <p><strong>حجم العمل:</strong> <span id="workload-value">نطاق خفيف</span></p>
+              <p><strong>الإطار الزمني:</strong> <span id="timing-value">إطار مريح</span></p>
+              <p><strong>ملاحظة:</strong> <span id="note-value">مناسب للأعمال القصيرة مع تعليمات واضحة.</span></p>
+              <p><strong>الأولوية:</strong> <span id="urgency-value">يمكن التخطيط بهدوء</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="estimator estimate-form-box">
           <label for="pages">عدد الصفحات: <span id="pages-value">5 صفحات</span></label>
           <input type="range" id="pages" min="1" max="30" value="5" step="1" />
 
@@ -144,10 +278,8 @@
           </div>
 
           <div class="result-hint-box">
-            بعد اختيار عدد الصفحات والموعد والمستوى الأكاديمي، اضغط على "اعرض النتيجة" ليظهر لك التقدير الأولي في صندوق منفصل.
+            بعد اختيار عدد الصفحات والموعد والمستوى الأكاديمي، اضغط على "اعرض النتيجة" ليظهر لك التقدير الأولي في صندوق منفصل بدون تمديد الصندوق الأصلي.
           </div>
-
-          <div class="success-msg" id="estimator-result" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -266,7 +398,12 @@
     const levelInput = document.getElementById('level');
     const calculateBtn = document.getElementById('calculate-btn');
     const showResultBtn = document.getElementById('show-result-btn');
-    const resultBox = document.getElementById('estimator-result');
+    const resultWrap = document.getElementById('estimate-result-wrap');
+
+    const workloadValue = document.getElementById('workload-value');
+    const timingValue = document.getElementById('timing-value');
+    const noteValue = document.getElementById('note-value');
+    const urgencyValue = document.getElementById('urgency-value');
 
     function updatePagesLabel() {
       const value = Number(pagesInput.value);
@@ -309,32 +446,24 @@
       return 'يفضل إرسال التعليمات والمراجع المطلوبة مبكرًا للحصول على تنظيم أفضل.';
     }
 
-    function buildResult() {
+    function renderResult() {
       const pages = Number(pagesInput.value);
       const deadline = deadlineInput.value;
       const level = levelInput.value;
 
-      const workload = getWorkload(pages, level);
-      const timing = getTiming(deadline);
-      const urgency = getUrgency(deadline, pages);
-      const note = getNote(pages, deadline, level);
+      workloadValue.textContent = getWorkload(pages, level);
+      timingValue.textContent = getTiming(deadline);
+      urgencyValue.textContent = getUrgency(deadline, pages);
+      noteValue.textContent = getNote(pages, deadline, level);
 
-      resultBox.innerHTML = `
-        <div>
-          <h3>النتيجة الأولية</h3>
-          <p><strong>حجم العمل:</strong> ${workload}</p>
-          <p><strong>الإطار الزمني:</strong> ${timing}</p>
-          <p><strong>ملاحظة:</strong> ${note}</p>
-          <p><strong>الأولوية:</strong> ${urgency}</p>
-        </div>
-      `;
+      resultWrap.classList.remove('hidden');
     }
 
     updatePagesLabel();
 
     pagesInput.addEventListener('input', updatePagesLabel);
-    calculateBtn.addEventListener('click', buildResult);
-    showResultBtn.addEventListener('click', buildResult);
+    calculateBtn.addEventListener('click', renderResult);
+    showResultBtn.addEventListener('click', renderResult);
   })();
 </script>
 
