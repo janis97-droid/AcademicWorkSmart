@@ -237,27 +237,7 @@
 
       <div class="contact-grid">
         <div class="estimator">
-          <form action="https://formspree.io/f/mlgoazpy" method="POST">
-            <input type="hidden" name="language" value="Hebrew" />
-
-            <label for="contact-name">שם</label>
-            <input type="text" id="contact-name" name="name" placeholder="השם המלא שלך" required />
-
-            <label for="contact-method">טלגרם או אימייל</label>
-            <input type="text" id="contact-method" name="contact" placeholder="@username או email@example.com" required />
-
-            <label for="contact-subject">התחום שנבחר</label>
-            <input type="text" id="contact-subject" name="subject" placeholder="התחום שבחרת יופיע כאן" />
-
-            <label for="contact-details">פרטי הבקשה</label>
-            <textarea id="contact-details" name="details" rows="6" placeholder="כתוב את פרטי הבקשה, מספר עמודים, מועד סיום, וכל הערה נוספת" required></textarea>
-
-            <button type="submit" class="btn btn-primary">שלח בקשה</button>
-          </form>
-
-          <div class="file-note">
-            הבקשה תישלח ישירות לתיבת Formspree שמחוברת לקישור הזה.
-          </div>
+          <div id="contact-form-root"></div>
         </div>
 
         <div class="contact-side">
@@ -288,6 +268,7 @@
   </div>
 </div>
 
+<script src="../assets/form-embed.js"></script>
 <script src="../assets/main.js"></script>
 </body>
 </html>
